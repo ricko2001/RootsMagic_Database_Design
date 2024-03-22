@@ -62,6 +62,12 @@ MediaFile   Case insensitive
 
 MeidaType
 
+| Value | Meaning |
+| :---- | :------ |
+| 1     | Image   |
+| 2     | File    |
+| 3     | Sound   |
+| 4     | Video   |
 
 ## Open Questions
 

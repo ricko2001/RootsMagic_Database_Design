@@ -1,32 +1,28 @@
-# RM v9.1.3 full schema
+# RM v9.1.3 full database schema
+
+Information used in the individual table files
 
 ## Controlled Vocabulary
 
-| token         | meaning                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------ |
-| _PK           | primary key                                                                                |
-| _FK           | foreign key                                                                                |
-| _PFK          | polymorphic foreign key                                                                    |
-| _PFK-TYPE     | polymorphic foreign key type (where does PFFK point)                                       |
-| _STD          | standard colum described here                                                              |
-| _TEXT-SL      | text field designed for a single line string                                               |
-| _TEXT-ML      | text field designed for a multiple lines of text. Uses CR LF end of line for Win and MacOS |
-| _RNC          | column is used in an index collated with proprietory collation RMNOCAASE                   |
-| _01-FLAG      | SQLite Integer column with a value of 0 or 1                                               |
-| _3CAHR-FLAG   | text field containing 3 characters (CitationLinkTable.Quality)                             |
-| _SPECIAL-CASE | marker used to describe special case of _FK, usually 0.                                    |
-| _GUI-LAB      | set to the string used to label the data in the RM GUI                                     |
-| _NOT-IMP      | Not Implemented. No obvious use as of current release.                                     |
-| ### DONE 1    | marker indicating work is completed for that file to standard "1"                          |
+| token         | meaning                                                                               |
+| ------------- | ------------------------------------------------------------------------------------- |
+| _PK           | primary key                                                                           |
+| _FK           | foreign key                                                                           |
+| _PFK          | polymorphic foreign key                                                               |
+| _PFK-TYPE     | polymorphic foreign key type (where does PFK point)                                   |
+| _STD          | standard colum described here                                                         |
+| _TEXT-SL      | text field designed for a single line string                                          |
+| _TEXT-ML      | text field designed for multiple lines of text. Uses CR LF line end for Win and MacOS |
+| _RNC          | column is used in an index collated with proprietary collation RMNOCAASE              |
+| _SPECIAL-CASE | marker used to describe special case of _FK, usually 0.                               |
+| _GUI-LAB      | set to the string used to label the data in the RM GUI                                |
+| _NOT-IMP      | Not Implemented. No obvious use as of current release.                                |
+| ### DONE 1    | marker indicating work is completed for that file to standard "1"                     |
 
 
 ## Notes
 
-The column types-
-_01-FLAG, _3CAHR-FLAG
-should be thought of as _LOOKUP type  TODO
-
-Polymorphic Associations. Using this design, can't use relational database refential integrity mechanisms.
+Polymorphic Associations. Using this design, can't use relational database referential integrity mechanisms.
 
 
 Could use-\
@@ -67,12 +63,14 @@ for example- Oakland, CA
 stored value   scale    actual
 378044389   * 10e-7  = 37.8044389
 -1222697194 * 10e-7  = -122.2697194
-W adn S are nedative
+W adn S are negative
+
 
 
 ## Lookup tables
 
-below from  https://sqlitetoolsforrootsmagic.com/rm9-data-definitions/
+below from  <https://sqlitetoolsforrootsmagic.com/rm9-data-definitions/>\
+Has info, but not clear how to interpret it
 
 | Table    | RecType | OwnerType             | OwnerID |
 | -------- | ------- | --------------------- | ------- |
@@ -83,20 +81,22 @@ below from  https://sqlitetoolsforrootsmagic.com/rm9-data-definitions/
 
 Polymorphic Foreign Key Type
 
-| OwnerType | Links to     | Table.row                |
-| --------- | ------------ | ------------------------ |
-| 0         | person       | PersonTable.PersonID     |
-| 1         | couple       | FamilyTable.FamilyID     |
-| 2         | fact/event   | EventTable.EventID       |
-| 3         | source       | SourceTable.SourceID     |
-| 4         | citation     | CitationTable.CitationID |
-| 5         | place        | PlaceTable.PlaceID       |
-| 6         | task         | TaskTable.TaskID         |
-| 7         | name         | NameTable.NameID         |
-| 8         |              |                          |
-| 14        | place detail | PlaceTable.PlaceID       |
-| 19        | association  | FANTable.FanID           |
-| 20        |              |                          |
+| OwnerType | Links to        | Table.row                |
+| --------- | --------------- | ------------------------ |
+| 0         | person          | PersonTable.PersonID     |
+| 1         | family/couple   | FamilyTable.FamilyID     |
+| 2         | fact/event      | EventTable.EventID       |
+| 3         | source          | SourceTable.SourceID     |
+| 4         | citation        | CitationTable.CitationID |
+| 5         | place           | PlaceTable.PlaceID       |
+| 6         | task            | TaskTable.TaskID         |
+| 7         | name            | NameTable.NameID         |
+| 8         | _NOT-IMP RM v>7 |                          |
+| 14        | place detail    | PlaceTable.PlaceID       |
+| 15        | _NOT-IMP RM v>7 |                          |
+| 18        | Task Folder     |                          |
+| 19        | association     | FANTable.FanID           |
+| 20        |                 |                          |
 
 5 & 14 both point to PlaceTable.PlaceID \
 PlaceTable.PlaceType distinguishes the 3 types of places.
@@ -282,35 +282,87 @@ CREATE INDEX idxWitnessPersonID ON WitnessTable (PersonID);
 ```
 
 
-## RMNOCASE - found in DDL here
+## RMNOCASE - found in DDL in these lines
 
-(ignore Line  NN)
 ```
-	Line   7: CREATE TABLE AddressTable (AddressID INTEGER PRIMARY KEY, AddressType INTEGER, Name TEXT COLLATE RMNOCASE, Street1 TEXT, Street2 TEXT, City TEXT, State TEXT, Zip TEXT, Country TEXT, Phone1 TEXT, Phone2 TEXT, Fax TEXT, Email TEXT, URL TEXT, Latitude INTEGER, Longitude INTEGER, Note TEXT, UTCModDate FLOAT );
+CREATE TABLE AddressTable (AddressID INTEGER PRIMARY KEY, AddressType INTEGER, Name TEXT COLLATE RMNOCASE, Street1 TEXT, Street2 TEXT, City TEXT, State TEXT, Zip TEXT, Country TEXT, Phone1 TEXT, Phone2 TEXT, Fax TEXT, Email TEXT, URL TEXT, Latitude INTEGER, Longitude INTEGER, Note TEXT, UTCModDate FLOAT );
 
-	Line  15: CREATE TABLE CitationTable (CitationID INTEGER PRIMARY KEY, SourceID INTEGER, Comments TEXT, ActualText TEXT, RefNumber TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT, Fields BLOB, UTCModDate FLOAT, CitationName TEXT COLLATE RMNOCASE );
+CREATE TABLE CitationTable (CitationID INTEGER PRIMARY KEY, SourceID INTEGER, Comments TEXT, ActualText TEXT, RefNumber TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT, Fields BLOB, UTCModDate FLOAT, CitationName TEXT COLLATE RMNOCASE );
 
-	Line  23: CREATE TABLE FactTypeTable (FactTypeID INTEGER PRIMARY KEY, OwnerType INTEGER, Name TEXT COLLATE RMNOCASE, Abbrev TEXT, GedcomTag TEXT, UseValue INTEGER, UseDate INTEGER, UsePlace INTEGER, Sentence TEXT, Flags INTEGER, UTCModDate FLOAT );
+CREATE TABLE FactTypeTable (FactTypeID INTEGER PRIMARY KEY, OwnerType INTEGER, Name TEXT COLLATE RMNOCASE, Abbrev TEXT, GedcomTag TEXT, UseValue INTEGER, UseDate INTEGER, UsePlace INTEGER, Sentence TEXT, Flags INTEGER, UTCModDate FLOAT );
 
-	Line  31: CREATE TABLE FANTypeTable (FANTypeID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, Role1 TEXT, Role2 TEXT, Sentence1 TEXT, Sentence2 TEXT, UTCModDate FLOAT );
+CREATE TABLE FANTypeTable (FANTypeID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, Role1 TEXT, Role2 TEXT, Sentence1 TEXT, Sentence2 TEXT, UTCModDate FLOAT );
 
-	Line  37: CREATE TABLE MultimediaTable (MediaID INTEGER PRIMARY KEY, MediaType INTEGER, MediaPath TEXT, MediaFile TEXT COLLATE RMNOCASE, URL TEXT, Thumbnail BLOB, Caption TEXT COLLATE RMNOCASE, RefNumber TEXT COLLATE RMNOCASE, Date TEXT, SortDate BIGINT, Description TEXT, UTCModDate FLOAT );
+CREATE TABLE MultimediaTable (MediaID INTEGER PRIMARY KEY, MediaType INTEGER, MediaPath TEXT, MediaFile TEXT COLLATE RMNOCASE, URL TEXT, Thumbnail BLOB, Caption TEXT COLLATE RMNOCASE, RefNumber TEXT COLLATE RMNOCASE, Date TEXT, SortDate BIGINT, Description TEXT, UTCModDate FLOAT );
 
-	Line  39: CREATE TABLE NameTable (NameID INTEGER PRIMARY KEY, OwnerID INTEGER, Surname TEXT COLLATE RMNOCASE, Given TEXT COLLATE RMNOCASE, Prefix TEXT COLLATE RMNOCASE, Suffix TEXT COLLATE RMNOCASE, Nickname TEXT COLLATE RMNOCASE, NameType INTEGER, Date TEXT, SortDate BIGINT, IsPrimary INTEGER, IsPrivate INTEGER, Proof INTEGER, Sentence TEXT, Note TEXT, BirthYear INTEGER, DeathYear INTEGER, Display INTEGER, Language TEXT, UTCModDate FLOAT, SurnameMP TEXT, GivenMP TEXT, NicknameMP TEXT );
+CREATE TABLE NameTable (NameID INTEGER PRIMARY KEY, OwnerID INTEGER, Surname TEXT COLLATE RMNOCASE, Given TEXT COLLATE RMNOCASE, Prefix TEXT COLLATE RMNOCASE, Suffix TEXT COLLATE RMNOCASE, Nickname TEXT COLLATE RMNOCASE, NameType INTEGER, Date TEXT, SortDate BIGINT, IsPrimary INTEGER, IsPrivate INTEGER, Proof INTEGER, Sentence TEXT, Note TEXT, BirthYear INTEGER, DeathYear INTEGER, Display INTEGER, Language TEXT, UTCModDate FLOAT, SurnameMP TEXT, GivenMP TEXT, NicknameMP TEXT );
 
-	Line  45: CREATE TABLE PlaceTable (PlaceID INTEGER PRIMARY KEY, PlaceType INTEGER, Name TEXT COLLATE RMNOCASE, Abbrev TEXT, Normalized TEXT, Latitude INTEGER, Longitude INTEGER, LatLongExact INTEGER, MasterID INTEGER, Note TEXT, Reverse TEXT COLLATE RMNOCASE, fsID INTEGER, anID INTEGER, UTCModDate FLOAT );
+CREATE TABLE PlaceTable (PlaceID INTEGER PRIMARY KEY, PlaceType INTEGER, Name TEXT COLLATE RMNOCASE, Abbrev TEXT, Normalized TEXT, Latitude INTEGER, Longitude INTEGER, LatLongExact INTEGER, MasterID INTEGER, Note TEXT, Reverse TEXT COLLATE RMNOCASE, fsID INTEGER, anID INTEGER, UTCModDate FLOAT );
 
-	Line  47: CREATE TABLE RoleTable (RoleID INTEGER PRIMARY KEY, RoleName TEXT COLLATE RMNOCASE, EventType INTEGER, RoleType INTEGER, Sentence TEXT, UTCModDate FLOAT );
+CREATE TABLE RoleTable (RoleID INTEGER PRIMARY KEY, RoleName TEXT COLLATE RMNOCASE, EventType INTEGER, RoleType INTEGER, Sentence TEXT, UTCModDate FLOAT );
 
-	Line  49: CREATE TABLE SourceTable (SourceID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, RefNumber TEXT, ActualText TEXT, Comments TEXT, IsPrivate INTEGER, TemplateID INTEGER, Fields BLOB, UTCModDate FLOAT );
+CREATE TABLE SourceTable (SourceID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, RefNumber TEXT, ActualText TEXT, Comments TEXT, IsPrivate INTEGER, TemplateID INTEGER, Fields BLOB, UTCModDate FLOAT );
 
-	Line  51: CREATE TABLE SourceTemplateTable (TemplateID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, Description TEXT, Favorite INTEGER, Category TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT, FieldDefs BLOB, UTCModDate FLOAT );
+CREATE TABLE SourceTemplateTable (TemplateID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, Description TEXT, Favorite INTEGER, Category TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT, FieldDefs BLOB, UTCModDate FLOAT );
 
-	Line  53: CREATE TABLE TagTable (TagID INTEGER PRIMARY KEY, TagType INTEGER, TagValue INTEGER, TagName TEXT COLLATE RMNOCASE, Description TEXT, UTCModDate FLOAT );
+CREATE TABLE TagTable (TagID INTEGER PRIMARY KEY, TagType INTEGER, TagValue INTEGER, TagName TEXT COLLATE RMNOCASE, Description TEXT, UTCModDate FLOAT );
 
-	Line  57: CREATE TABLE TaskTable (TaskID INTEGER PRIMARY KEY, TaskType INTEGER, RefNumber TEXT, Name TEXT COLLATE RMNOCASE, Status INTEGER, Priority INTEGER, Date1 TEXT, Date2 TEXT, Date3 TEXT, SortDate1 BIGINT, SortDate2 BIGINT, SortDate3 BITINT, Filename TEXT, Details TEXT, Results TEXT, UTCModDate FLOAT, Exclude INTEGER );
+CREATE TABLE TaskTable (TaskID INTEGER PRIMARY KEY, TaskType INTEGER, RefNumber TEXT, Name TEXT COLLATE RMNOCASE, Status INTEGER, Priority INTEGER, Date1 TEXT, Date2 TEXT, Date3 TEXT, SortDate1 BIGINT, SortDate2 BIGINT, SortDate3 BITINT, Filename TEXT, Details TEXT, Results TEXT, UTCModDate FLOAT, Exclude INTEGER );
 
-	Line  61: CREATE TABLE WitnessTable (WitnessID INTEGER PRIMARY KEY, EventID INTEGER, PersonID INTEGER, WitnessOrder INTEGER, Role INTEGER, Sentence TEXT, Note TEXT, Given TEXT COLLATE RMNOCASE, Surname TEXT COLLATE RMNOCASE, Prefix TEXT COLLATE RMNOCASE, Suffix TEXT COLLATE RMNOCASE, UTCModDate FLOAT );
+CREATE TABLE WitnessTable (WitnessID INTEGER PRIMARY KEY, EventID INTEGER, PersonID INTEGER, WitnessOrder INTEGER, Role INTEGER, Sentence TEXT, Note TEXT, Given TEXT COLLATE RMNOCASE, Surname TEXT COLLATE RMNOCASE, Prefix TEXT COLLATE RMNOCASE, Suffix TEXT COLLATE RMNOCASE, UTCModDate FLOAT );
 
 	Line 133: CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;
 ```
+and isolated-
+
+```
+CREATE TABLE AddressTable (Name TEXT COLLATE RMNOCASE
+
+CREATE TABLE CitationTable (CitationName TEXT COLLATE RMNOCASE
+
+CREATE TABLE FactTypeTable (Name TEXT COLLATE RMNOCASE
+
+CREATE TABLE FANTypeTable (Name TEXT COLLATE RMNOCASE
+
+CREATE TABLE MultimediaTable (MediaFile TEXT COLLATE RMNOCASE, Caption TEXT COLLATE RMNOCASE, RefNumber TEXT COLLATE RMNOCASE, 
+
+CREATE TABLE NameTable (Surname TEXT COLLATE RMNOCASE, Given TEXT COLLATE RMNOCASE, Prefix TEXT COLLATE RMNOCASE, Suffix TEXT COLLATE RMNOCASE, Nickname TEXT COLLATE RMNOCASE
+
+CREATE TABLE PlaceTable (Name TEXT COLLATE RMNOCASE, Reverse TEXT COLLATE RMNOCASE
+
+CREATE TABLE RoleTable (RoleName TEXT COLLATE RMNOCASE
+
+CREATE TABLE SourceTable (Name TEXT COLLATE RMNOCASE
+
+CREATE TABLE SourceTemplateTable (Name TEXT COLLATE RMNOCASE
+
+CREATE TABLE TagTable (TagName TEXT COLLATE RMNOCASE
+
+CREATE TABLE TaskTable (Name TEXT COLLATE RMNOCASE
+
+CREATE TABLE WitnessTable (Given TEXT COLLATE RMNOCASE, Surname TEXT COLLATE RMNOCASE, Prefix TEXT COLLATE RMNOCASE, Suffix TEXT COLLATE RMNOCASE
+
+	Line 133: CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;
+```
+
+This table is directly from:\
+Pat Jones:\
+https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-ownership/
+
+
+| Owner Type Value | Owner Type                                        | Can Own URL | Can Own Place | Can Own Place Detail | Can Own Media | Can Own Task | Can Own Address | Can Own Citation | Can Own Name | Can Own Child | Can Own Event |
+| :--------------- | :------------------------------------------------ | :---------- | :------------ | :------------------- | :------------ | :----------- | :-------------- | :--------------- | :----------- | :------------ | :------------ |
+| 0                | Person                                            | Y           |               |                      | Y             | Y            | Y               | Y                | Y            |               | Y             |
+| 1                | Family                                            |             |               |                      | Y             | Y            | Y               | Y                |              | Y             | Y             |
+| 2                | Event                                             |             | Y             | Y                    | Y             | Y            |                 | Y                |              |               |               |
+| 3                | Source                                            | Y           |               |                      | Y             |              | Y               | Y                |              |               |               |
+| 4                | Citation                                          | Y           |               |                      | Y             |              |                 |                  |              |               |               |
+| 5                | Place                                             | Y           |               | Y                    | Y             | Y            |                 |                  |              |               |               |
+| 6                | Task                                              | Y           |               |                      | Y             |              | Y               | Y                |              |               |               |
+| 7                | Name                                              |             |               |                      | Y             | Y            |                 | Y                |              |               |               |
+| 8                | not used (was General task in RM7 with 0 ownerid) |             |               |                      |               |              |                 |                  |              |               |               |
+| 14               | Place Detail                                      | Y           |               |                      | Y             | Y            |                 |                  |              |               |               |
+| 15               | not used (was Research Item in RM7)               |             |               |                      |               |              |                 |                  |              |               |               |
+| 18               | Task Folder (update of Research Log)              |             |               |                      |               | Y            |                 |                  |              |               |               |
+|                  |                                                   |             |               |                      |               |              |                 |                  |              |               |               |
+

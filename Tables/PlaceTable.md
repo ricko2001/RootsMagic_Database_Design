@@ -33,25 +33,26 @@ CREATE INDEX idxReversePlaceName ON PlaceTable (Reverse);
 
 ## Notes
 
-| #   | Name         | Note                                       |
-| --- | ------------ | ------------------------------------------ |
-| 1   | PlaceID      | _PK                                        |
-| 2   | PlaceType    | _LOOKUP                                     |
-| 3   | Name         | _TEXT-SL                                   |
-| 4   | Abbrev       | _TEXT-SL                                   |
-| 5   | Normalized   | _TEXT-SL                                   |
-| 6   | Latitude     | _STD                                       |
-| 7   | Longitude    | _STD                                       |
+| #   | Name         | Note                                         |
+| --- | ------------ | -------------------------------------------- |
+| 1   | PlaceID      | _PK                                          |
+| 2   | PlaceType    | _LOOKUP                                      |
+| 3   | Name         | _TEXT-SL                                     |
+| 4   | Abbrev       | _TEXT-SL                                     |
+| 5   | Normalized   | _TEXT-SL                                     |
+| 6   | Latitude     | _STD                                         |
+| 7   | Longitude    | _STD                                         |
 | 8   | LatLongExact | _NOT-IMP  (all 0)                            |
-| 9   | MasterID     | _FK ==> PlaceTable.PlaceID                 |
-| 10  | Note         | _TEXT-ML                                   |
-| 11  | Reverse      | _TEXT-SL                                   |
-| 12  | fsID         | _NOT-IMP  (all NULL) FamilySearch place ID ? |
-| 13  | anID         | _NOT-IMP  (all NULL)  Ancestry place ID ?    |
-| 14  | UTCModDate   | _STD                                       |
+| 9   | MasterID     | _FK ==> PlaceTable.PlaceID  _SPECIAL-CASE    |
+| 10  | Note         | _TEXT-ML                                     |
+| 11  | Reverse      | _TEXT-SL                                     |
+| 12  | fsID         | _NOT-IMP  (all null) FamilySearch place ID ? |
+| 13  | anID         | _NOT-IMP  (all null) Ancestry place ID ?     |
+| 14  | UTCModDate   | _STD                                         |
 
-
-MasterID only used in for PlaceDetail records. Points to owning Master Place.
+_SPECIAL-CASE
+MasterID only used in for PlaceDetail records, otherwise 0. 
+Points to owning Master Place.
 
 Reverse de-normalized (?) reverse Name for master place, not populated for place detail records.
 

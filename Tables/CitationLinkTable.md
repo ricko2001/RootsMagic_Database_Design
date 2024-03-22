@@ -31,7 +31,7 @@ CREATE INDEX idxCitationLinkOwnerID ON CitationLinkTable (OwnerID);
 | 3   | OwnerType  | _PFK-TYPE                                                |
 | 4   | OwnerID    | _PFK                                                     |
 | 5   | SortOrder  | _NOT-IMP (all null)                                      |
-| 6   | Quality    | _3CAHR-FLAG _GUI-LAB="Source", "Information", "Evidence" |
+| 6   | Quality    | _LOOKUP _GUI-LAB="Source", "Information", "Evidence"     |
 | 7   | IsPrivate  | _STD _NOT-IMP (all 0)                                    |
 | 8   | Flags      | _NOT-IMP (all 0)                                         |
 | 9   | UTCModDate | _STD                                                     |

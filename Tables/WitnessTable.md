@@ -29,20 +29,20 @@ CREATE INDEX idxWitnessEventID ON WitnessTable (EventID);
 
 ## Notes
 
-| #   | Name         | Note                         |
-| --- | ------------ | ---------------------------- |
-| 1   | WitnessID    | _PK                          |
-| 2   | EventID      | _FK ==> EventTable.EventID   |
-| 3   | PersonID     | _FK ==> PersonTable.PersonID |
-| 4   | WitnessOrder | _NOT-IMP        sort order   |
-| 5   | Role         | _FK ==> RoleTable.RoleID     |
-| 6   | Sentence     | _TEXT-SL                     |
-| 7   | Note         | _TEXT-ML                     |
-| 8   | Given        | _TEXT-SL                     |
-| 9   | Surname      | _TEXT-SL                     |
-| 10  | Prefix       | _TEXT-SL                     |
-| 11  | Suffix       | _TEXT-SL                     |
-| 12  | UTCModDate   | _STD                         |
+| #   | Name         | Note                                       |
+| --- | ------------ | ------------------------------------------ |
+| 1   | WitnessID    | _PK                                        |
+| 2   | EventID      | _FK ==> EventTable.EventID                 |
+| 3   | PersonID     | _FK ==> PersonTable.PersonID _SPECIAL-CASE |
+| 4   | WitnessOrder | _NOT-IMP        sort order                 |
+| 5   | Role         | _FK ==> RoleTable.RoleID                   |
+| 6   | Sentence     | _TEXT-SL                                   |
+| 7   | Note         | _TEXT-ML                                   |
+| 8   | Given        | _TEXT-SL                                   |
+| 9   | Surname      | _TEXT-SL                                   |
+| 10  | Prefix       | _TEXT-SL                                   |
+| 11  | Suffix       | _TEXT-SL                                   |
+| 12  | UTCModDate   | _STD                                       |
 
 
 ````

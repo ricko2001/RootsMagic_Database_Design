@@ -61,12 +61,12 @@ CREATE INDEX idxSurnameMP ON NameTable (SurnameMP);
 | 5   | Prefix     | _TEXT-SL  _RNC               |
 | 6   | Suffix     | _TEXT-SL  _RNC               |
 | 7   | Nickname   | _TEXT-SL  _RNC               |
-| 8   | NameType   | _LOOKUP                       |
+| 8   | NameType   | _LOOKUP                      |
 | 9   | Date       | _STD                         |
 | 10  | SortDate   | _STD                         |
 | 11  | IsPrimary  | _STD                         |
 | 12  | IsPrivate  | _STD                         |
-| 13  | Proof      | _STD                  |
+| 13  | Proof      | _STD                         |
 | 14  | Sentence   | _TEXT-SL                     |
 | 14  | Sentence   | _TEXT-SL                     |
 | 15  | Note       | _TEXT-ML                     |
@@ -102,6 +102,7 @@ The new columns are not declared with a collation, so the indexes that exist wer
 
 | NameType | Type           |
 | -------- | -------------- |
+| 0        | <unspecified>  |
 | 1        | AKA            |
 | 2        | Birth          |
 | 3        | Immigrant      |

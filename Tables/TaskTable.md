@@ -57,14 +57,16 @@ Filename      | A path to a file, absolute path. Not connected to media gallery
 
 TODO SortDate1 to SortDate3\
     not std dates or sort dates
-My database has a variety of formats. Latest seem to be standard Sort dates.
+My database has a variety of formats. Latest seem to be standard Sort dates. Could be the result of old bugs in RM.
+
+Exclude   TODO  ??
 
 
 ## Lookup Tables
 
 | TaskType | Name           |
 | -------- | -------------- |
-| 0        | <blank>        |
+| 0        | <unspecified>  |
 | 1        | Research       |
 | 2        | To-Do          |
 | 3        | Correspondence |
@@ -77,7 +79,7 @@ My database has a variety of formats. Latest seem to be standard Sort dates.
 | 2      | Completed   |
 | 3      | On hold     |
 | 4      | Problem     |
-| 5      | Canceled    |
+| 5      | Cancelled   |
 
 
 | Priority | Name          |
@@ -95,4 +97,6 @@ My database has a variety of formats. Latest seem to be standard Sort dates.
 
 ## Open Questions
 
+What is the Exclude column for?
 
+### DONE 1

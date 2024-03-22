@@ -38,7 +38,7 @@ CREATE INDEX idxMediaOwnerID ON MediaLinkTable (OwnerID);
 | 3   | OwnerType  | _PFK-TYPE                                |
 | 4   | OwnerID    | _PFK                                     |
 | 5   | IsPrimary  | _STD                                     |
-| 6   | Include1   | _01-FLAG _GUI-LAB="Include in scrapbook" |
+| 6   | Include1   | _LOOKUP _GUI-LAB="Include in scrapbook" |
 | 7   | Include2   | _NOT-IMP  (all 0)                        |
 | 8   | Include3   | _NOT-IMP  (all 0)                        |
 | 9   | Include4   | _NOT-IMP  (all 0)                        |
@@ -74,6 +74,12 @@ SortOrder  Implemented only in the Person media gallery. (on Person edit windows
 Unimplemented feature would allow a tag to represent a subset of the full image.
 RectLeft, RectTop, RectRight, RectBottom
 
+## Lookup Tables
+
+| Include1 | meaning |
+| :------- | :------ |
+| 0        | no      |
+| 1        | yes     |
 
 ## Open Questions
 

@@ -24,17 +24,17 @@ CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;
 
 ## Notes
 
-| #   | Name       | Note                                 |
-| --- | ---------- | ------------------------------------ |
-| 1   | SourceID   | _PK                                  |
-| 2   | Name       | _TEXT-SL _RNC                        |
-| 3   | RefNumber  | _TEXT-SL                             |
-| 4   | ActualText | _TEXT-ML                             |
-| 5   | Comments   | _TEXT-ML                             |
-| 6   | IsPrivate  | _STD                                 |
-| 7   | TemplateID | _FK =>SourceTemplateTable.TemplateID |
-| 8   | Fields     | XML                                  |
-| 9   | UTCModDate | _STD                                 |
+| #   | Name       | Note                                               |
+| --- | ---------- | -------------------------------------------------- |
+| 1   | SourceID   | _PK                                                |
+| 2   | Name       | _TEXT-SL _RNC                                      |
+| 3   | RefNumber  | _TEXT-SL                                           |
+| 4   | ActualText | _TEXT-ML                                           |
+| 5   | Comments   | _TEXT-ML                                           |
+| 6   | IsPrivate  | _STD                                               |
+| 7   | TemplateID | _FK =>SourceTemplateTable.TemplateID _SPECIAL-CASE |
+| 8   | Fields     | XML                                                |
+| 9   | UTCModDate | _STD                                               |
 
 
 Name is the source name and it is collated with RMNOCASE, _GUI-LAB="Source Name"
