@@ -37,7 +37,7 @@ CREATE INDEX idxReversePlaceName ON PlaceTable (Reverse);
 | --- | ------------ | -------------------------------------------- |
 | 1   | PlaceID      | _PK                                          |
 | 2   | PlaceType    | _LOOKUP                                      |
-| 3   | Name         | _TEXT-SL                                     |
+| 3   | Name         | _TEXT-SL  _RMNC                              |
 | 4   | Abbrev       | _TEXT-SL                                     |
 | 5   | Normalized   | _TEXT-SL                                     |
 | 6   | Latitude     | _STD                                         |
@@ -45,7 +45,7 @@ CREATE INDEX idxReversePlaceName ON PlaceTable (Reverse);
 | 8   | LatLongExact | _NOT-IMP  (all 0)                            |
 | 9   | MasterID     | _FK ==> PlaceTable.PlaceID  _SPECIAL-CASE    |
 | 10  | Note         | _TEXT-ML                                     |
-| 11  | Reverse      | _TEXT-SL                                     |
+| 11  | Reverse      | _TEXT-SL  _RMNC                              |
 | 12  | fsID         | _NOT-IMP  (all null) FamilySearch place ID ? |
 | 13  | anID         | _NOT-IMP  (all null) Ancestry place ID ?     |
 | 14  | UTCModDate   | _STD                                         |

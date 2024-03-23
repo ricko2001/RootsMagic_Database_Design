@@ -38,10 +38,10 @@ CREATE INDEX idxWitnessEventID ON WitnessTable (EventID);
 | 5   | Role         | _FK ==> RoleTable.RoleID                   |
 | 6   | Sentence     | _TEXT-SL                                   |
 | 7   | Note         | _TEXT-ML                                   |
-| 8   | Given        | _TEXT-SL                                   |
-| 9   | Surname      | _TEXT-SL                                   |
-| 10  | Prefix       | _TEXT-SL                                   |
-| 11  | Suffix       | _TEXT-SL                                   |
+| 8   | Given        | _TEXT-SL  _RMNC                            |
+| 9   | Surname      | _TEXT-SL  _RMNC                            |
+| 10  | Prefix       | _TEXT-SL  _RMNC                            |
+| 11  | Suffix       | _TEXT-SL  _RMNC                            |
 | 12  | UTCModDate   | _STD                                       |
 
 

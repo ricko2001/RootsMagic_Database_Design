@@ -40,7 +40,7 @@ CREATE INDEX idxCitationSourceID ON CitationTable (SourceID);
 | 8   | Bibliography  | _TEXT-SL                     |
 | 9   | Fields        | BLOB XML                     |
 | 10  | UTCModDate    | _STD                         |
-| 11  | CitationName  | _RNC                         |
+| 11  | CitationName  | TEXT-SL  _RMNC               |
 
 
 Columns: Footnote, ShortFootnote, and Bibliography are used for custom sentences.

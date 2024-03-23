@@ -56,11 +56,11 @@ CREATE INDEX idxSurnameMP ON NameTable (SurnameMP);
 | --- | ---------- | ---------------------------- |
 | 1   | NameID     | _PK                          |
 | 2   | OwnerID    | _FK ==> PersonTable.PersonID |
-| 3   | Surname    | _TEXT-SL  _RNC               |
-| 4   | Given      | _TEXT-SL  _RNC               |
-| 5   | Prefix     | _TEXT-SL  _RNC               |
-| 6   | Suffix     | _TEXT-SL  _RNC               |
-| 7   | Nickname   | _TEXT-SL  _RNC               |
+| 3   | Surname    | _TEXT-SL  _RMNC              |
+| 4   | Given      | _TEXT-SL  _RMNC              |
+| 5   | Prefix     | _TEXT-SL  _RMNC              |
+| 6   | Suffix     | _TEXT-SL  _RMNC              |
+| 7   | Nickname   | _TEXT-SL  _RMNC              |
 | 8   | NameType   | _LOOKUP                      |
 | 9   | Date       | _STD                         |
 | 10  | SortDate   | _STD                         |

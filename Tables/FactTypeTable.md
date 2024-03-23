@@ -30,19 +30,19 @@ CREATE INDEX idxFactTypeName ON FactTypeTable (Name);
 
 ## Notes
 
-| #   | Name       | Note     |
-| --- | ---------- | -------- |
-| 1   | FactTypeID | _PK      |
-| 2   | OwnerType  | _LOOKUP  |
-| 3   | Name       | _TEXT-SL |
-| 4   | Abbrev     | _TEXT-SL |
-| 5   | GedcomTag  | _TEXT-SL |
-| 6   | UseValue   | _LOOKUP  |
-| 7   | UseDate    | _LOOKUP  |
-| 8   | UsePlace   | _LOOKUP  |
-| 9   | Sentence   | _TEXT-SL |
-| 10  | Flags      |          |
-| 11  | UTCModDate | _STD     |
+| #   | Name       | Note            |
+| --- | ---------- | --------------- |
+| 1   | FactTypeID | _PK             |
+| 2   | OwnerType  | _LOOKUP         |
+| 3   | Name       | _TEXT-SL  _RMNC |
+| 4   | Abbrev     | _TEXT-SL        |
+| 5   | GedcomTag  | _TEXT-SL        |
+| 6   | UseValue   | _LOOKUP         |
+| 7   | UseDate    | _LOOKUP         |
+| 8   | UsePlace   | _LOOKUP         |
+| 9   | Sentence   | _TEXT-SL        |
+| 10  | Flags      |                 |
+| 11  | UTCModDate | _STD            |
 
 
 UseValue, UseDate, UsePlace are yes no type flags that determine

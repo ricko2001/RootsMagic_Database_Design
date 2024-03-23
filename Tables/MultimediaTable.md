@@ -29,20 +29,20 @@ CREATE INDEX idxMediaURL ON MultimediaTable (URL);
 
 ## Notes
 
-| #   | Name        | Note           |
-| --- | ----------- | -------------- |
-| 1   | MediaID     | _PK            |
-| 2   | MediaType   | _LOOKUP        |
-| 3   | MediaPath   | _TEXT-SL       |
-| 4   | MediaFile   | _TEXT-SL  _RNC |
-| 5   | URL         | _NOT-IMP       |
-| 6   | Thumbnail   | image          |
-| 7   | Caption     | _TEXT-SL  _RNC |
-| 8   | RefNumber   | _TEXT-SL  _RNC |
-| 9   | Date        | _STD           |
-| 10  | SortDate    | _STD           |
-| 11  | Description | _TEXT-SL       |
-| 12  | UTCModDate  | _STD           |
+| #   | Name        | Note            |
+| --- | ----------- | --------------- |
+| 1   | MediaID     | _PK             |
+| 2   | MediaType   | _LOOKUP         |
+| 3   | MediaPath   | _TEXT-SL        |
+| 4   | MediaFile   | _TEXT-SL  _RMNC |
+| 5   | URL         | _NOT-IMP        |
+| 6   | Thumbnail   | image           |
+| 7   | Caption     | _TEXT-SL  _RMNC |
+| 8   | RefNumber   | _TEXT-SL  _RMNC |
+| 9   | Date        | _STD            |
+| 10  | SortDate    | _STD            |
+| 11  | Description | _TEXT-SL        |
+| 12  | UTCModDate  | _STD            |
 
 
 

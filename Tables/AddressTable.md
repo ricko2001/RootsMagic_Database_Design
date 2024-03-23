@@ -33,26 +33,26 @@ CREATE INDEX idxAddressName ON AddressTable (Name);
 
 ## Notes
 
-| #   | Name        | Type           |
-| --- | ----------- | -------------- |
-| 1   | AddressID   | _PK            |
-| 2   | AddressType | _LOOKUP        |
-| 3   | Name        | _TEXT-SL       |
-| 4   | Street1     | _TEXT-SL       |
-| 5   | Street2     | _TEXT-SL       |
-| 6   | City        | _TEXT-SL       |
-| 7   | State       | _TEXT-SL       |
-| 8   | Zip         | _TEXT-SL       |
-| 9   | Country     | _TEXT-SL       |
-| 10  | Phone1      | _TEXT-SL       |
-| 11  | Phone2      | _TEXT-SL       |
-| 12  | Fax         | _TEXT-SL       |
-| 13  | Email       | _TEXT-SL       |
-| 14  | URL         | _TEXT-SL       |
-| 15  | Latitude    | _STD  _NOT-IMP |
-| 16  | Longitude   | _STD  _NOT-IMP |
-| 17  | Note        | _TEXT-ML       |
-| 18  | UTCModDate  | _STD           |
+| #   | Name        | Type            |
+| --- | ----------- | --------------- |
+| 1   | AddressID   | _PK             |
+| 2   | AddressType | _LOOKUP         |
+| 3   | Name        | _TEXT-SL  _RMNC |
+| 4   | Street1     | _TEXT-SL        |
+| 5   | Street2     | _TEXT-SL        |
+| 6   | City        | _TEXT-SL        |
+| 7   | State       | _TEXT-SL        |
+| 8   | Zip         | _TEXT-SL        |
+| 9   | Country     | _TEXT-SL        |
+| 10  | Phone1      | _TEXT-SL        |
+| 11  | Phone2      | _TEXT-SL        |
+| 12  | Fax         | _TEXT-SL        |
+| 13  | Email       | _TEXT-SL        |
+| 14  | URL         | _TEXT-SL        |
+| 15  | Latitude    | _STD  _NOT-IMP  |
+| 16  | Longitude   | _STD  _NOT-IMP  |
+| 17  | Note        | _TEXT-ML        |
+| 18  | UTCModDate  | _STD            |
 
 
 | AddressType | Type                   |

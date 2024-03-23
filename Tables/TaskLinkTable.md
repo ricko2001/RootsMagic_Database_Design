@@ -8,6 +8,12 @@ CREATE TABLE TaskLinkTable (LinkID INTEGER PRIMARY KEY, TaskID INTEGER, OwnerTyp
 CREATE INDEX idxTaskOwnerID ON TaskLinkTable (OwnerID);
 ```
 
+## Purpsoe
+Handles linking of Tasks to owning - Person, Event etc
+and 
+linking of task to a folder name (TagTable)
+
+
 ## Columns List
 
 | #   | Name       | Type    |
@@ -20,33 +26,25 @@ CREATE INDEX idxTaskOwnerID ON TaskLinkTable (OwnerID);
 
 ## Notes
 
-| #   | Name       | Note |
-| --- | ---------- | ---- |
-| 1   | LinkID     | _PK  |
-| 2   | TaskID     |      |
-| 3   | OwnerType  |      |
-| 4   | OwnerID    |      |
-| 5   | UTCModDate | _STD |
+| #   | Name       | Note                     |
+| --- | ---------- | ------------------------ |
+| 1   | LinkID     | _PK                      |
+| 2   | TaskID     | _FK ==> TaskTable.TaskID |
+| 3   | OwnerType  | _PFK-TYPE                |
+| 4   | OwnerID    | _PFK                     |
+| 5   | UTCModDate | _STD                     |
 
-## Lookup Tables
+Links Tasks to the object the task is for, usually a person or a fact.
+But now, also puts the Task in a Task Folder
 
-OwnerType
-
-0    TaskTable.TaskID ==> PersonTable.PersonID
-
-1    TaskTable.TaskID ==> FamilyTable.FamilyID
-
-2    TaskTable.TaskID ==> EventTable.EventID
-
-18    TaskTable.TaskID ==> TagTable.TagID            TagValue not used
+if OwnerType = 18 (Task Folder name)
+OwnerID ==> TagTable.TagID
 
 
-
-Handle linking of Tasks to owning object
-
-and 
-
-linking of task to a folder name (TagTable)
+Note that for OwnerType=18
+TaskTable.OwnerID ==> TagTable.TagID  
+which is what would be expected.
+TagTable.TagValue seems to be used for Group names only.
 
 
 ## Open Questions
@@ -59,6 +57,6 @@ the source is linked through the citation.
 Not the same way tasks are linked to other objects.
 
 
-
+### DONE 1
 
 

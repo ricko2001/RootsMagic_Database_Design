@@ -38,15 +38,15 @@ CREATE INDEX idxMediaOwnerID ON MediaLinkTable (OwnerID);
 | 3   | OwnerType  | _PFK-TYPE                                |
 | 4   | OwnerID    | _PFK                                     |
 | 5   | IsPrimary  | _STD                                     |
-| 6   | Include1   | _LOOKUP _GUI-LAB="Include in scrapbook" |
+| 6   | Include1   | _LOOKUP _GUI-LAB="Include in scrapbook"  |
 | 7   | Include2   | _NOT-IMP  (all 0)                        |
 | 8   | Include3   | _NOT-IMP  (all 0)                        |
 | 9   | Include4   | _NOT-IMP  (all 0)                        |
 | 10  | SortOrder  | _NOT_IMP except for person media gallery |
-| 11  | RectLeft   | _NOT-IMP                                 |
-| 12  | RectTop    | _NOT-IMP                                 |
-| 13  | RectRight  | _NOT-IMP                                 |
-| 14  | RectBottom | _NOT-IMP                                 |
+| 11  | RectLeft   | _NOT-IMP  (all 0)                        |
+| 12  | RectTop    | _NOT-IMP  (all 0)                        |
+| 13  | RectRight  | _NOT-IMP  (all 0)                        |
+| 14  | RectBottom | _NOT-IMP  (all 0)                        |
 | 15  | Comments   | _TEXT-ML                                 |
 | 16  | UTCModDate | _STD                                     |
 

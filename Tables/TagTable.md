@@ -21,33 +21,32 @@ CREATE INDEX idxTagType ON TagTable (TagType);
 
 ## Notes
  
-| #   | Name        | Note     |
-| --- | ----------- | -------- |
-| 1   | TagID       | _PK      |
-| 2   | TagType     |          |
-| 3   | TagValue    |          |
-| 4   | TagName     | _TEXT-SL |
-| 5   | Description | _TEXT-SL |
-| 6   | UTCModDate  | _STD     |
+| #   | Name        | Note            |
+| --- | ----------- | --------------- |
+| 1   | TagID       | _PK             |
+| 2   | TagType     | _LOOKUP         |
+| 3   | TagValue    |                 |
+| 4   | TagName     | _TEXT-SL  _RMNC |
+| 5   | Description | _TEXT-SL        |
+| 6   | UTCModDate  | _STD            |
 
+TagID\
+is pointed to by TaskLinkTable, as expected.
 
-```
-TagValue        TODO  
-                GroupID in GrouoTable points to TagValue, not TagID
+TagValue\
+GroupID in GroupTable points to TagValue, not TagID
+so it's an identifier specific to group names
 
-TagName            simple name
-Description        explanation of name
-UTCModDate        mod julian date set for each write
-```
+TagName\
+simple name, used according to TagType
+
 
 ## Lookup Tables
 
-| TagType | function          |
-| ------- | ----------------- |
-| 0       | Names of Groups   |
-| 1       | Task Folder Names |
+| TagType | meaning          |
+| :------ | :--------------- |
+| 0       | group name       |
+| 1       | task folder name |
 
 
 ## Open Questions
-
-TagValue        TODO  

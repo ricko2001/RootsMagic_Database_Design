@@ -4,25 +4,28 @@ Information used in the individual table files
 
 ## Controlled Vocabulary
 
-| token         | meaning                                                                               |
-| ------------- | ------------------------------------------------------------------------------------- |
-| _PK           | primary key                                                                           |
-| _FK           | foreign key                                                                           |
-| _PFK          | polymorphic foreign key                                                               |
-| _PFK-TYPE     | polymorphic foreign key type (where does PFK point)                                   |
-| _STD          | standard colum described here                                                         |
-| _TEXT-SL      | text field designed for a single line string                                          |
-| _TEXT-ML      | text field designed for multiple lines of text. Uses CR LF line end for Win and MacOS |
-| _RNC          | column is used in an index collated with proprietary collation RMNOCAASE              |
-| _SPECIAL-CASE | marker used to describe special case of _FK, usually 0.                               |
-| _GUI-LAB      | set to the string used to label the data in the RM GUI                                |
-| _NOT-IMP      | Not Implemented. No obvious use as of current release.                                |
-| ### DONE 1    | marker indicating work is completed for that file to standard "1"                     |
+| token | meaning |
+| ----- | ------- |
+ RM | RootsMagic
+ | GUI           | Graphical User Interface- what is displayed by RM                                     |
+ | _-----------K | p-----------------------------------------------------------------------------------y |
+ | _FK           | foreign key                                                                           |
+ | _PFK          | polymorphic foreign key                                                               |
+ | _PFK-TYPE     | polymorphic foreign key type (where does PFK point)                                   |
+ | _STD          | standard colum described here                                                         |
+ | _TEXT-SL      | text field designed for a single line string                                          |
+ | _TEXT-ML      | text field designed for multiple lines of text. Uses CR LF line end for Win and MacOS |
+ | _RMNC         | column is used in an index collated with proprietary collation RMNOCAASE              |
+ | _SPECIAL-CASE | marker used to describe special case of _FK, usually 0.                               |
+ | _GUI-LAB      | set to the string used to label the data in the RM GUI                                |
+ | _NOT-IMP      | Not Implemented. No obvious use as of current release.                                |
+ | ### DONE 1    | marker indicating work is completed for that file to standard "1"                     |
 
 
 ## Notes
 
-Polymorphic Associations. Using this design, can't use relational database referential integrity mechanisms.
+Polymorphic Associations. Using this design for polymorphism-
+ * can't use relational database referential integrity mechanisms.
 
 
 Could use-\
@@ -69,37 +72,33 @@ W adn S are negative
 
 ## Lookup tables
 
-below from  <https://sqlitetoolsforrootsmagic.com/rm9-data-definitions/>\
-Has info, but not clear how to interpret it
-
-| Table    | RecType | OwnerType             | OwnerID |
-| -------- | ------- | --------------------- | ------- |
-| Payload  | 1       | (SavedCriteriaSearch) | 8       | 0
-| Payload  | 2       | (SavedCriteriaGroup)  | 20      | TagTable.TagValue, GroupTable.GroupID
-| FANTable |         |                       | 19      | CitationLinkTable, MediaLinkTable,...
-
-
 Polymorphic Foreign Key Type
 
-| OwnerType | Links to        | Table.row                |
-| --------- | --------------- | ------------------------ |
-| 0         | person          | PersonTable.PersonID     |
-| 1         | family/couple   | FamilyTable.FamilyID     |
-| 2         | fact/event      | EventTable.EventID       |
-| 3         | source          | SourceTable.SourceID     |
-| 4         | citation        | CitationTable.CitationID |
-| 5         | place           | PlaceTable.PlaceID       |
-| 6         | task            | TaskTable.TaskID         |
-| 7         | name            | NameTable.NameID         |
-| 8         | _NOT-IMP RM v>7 |                          |
-| 14        | place detail    | PlaceTable.PlaceID       |
-| 15        | _NOT-IMP RM v>7 |                          |
-| 18        | Task Folder     |                          |
-| 19        | association     | FANTable.FanID           |
-| 20        |                 |                          |
+| OwnerType | Links to         | Table.row                             |
+| --------- | ---------------- | ------------------------------------- |
+| 0         | person           | PersonTable.PersonID                  |
+| 1         | family/couple    | FamilyTable.FamilyID                  |
+| 2         | fact/event       | EventTable.EventID                    |
+| 3         | source           | SourceTable.SourceID                  |
+| 4         | citation         | CitationTable.CitationID              |
+| 5         | place            | PlaceTable.PlaceID                    |
+| 6         | task             | TaskTable.TaskID                      |
+| 7         | name             | NameTable.NameID                      |
+| 8         | 0 _SEPECIAL-CASE | <nothing>                             |
+| 14        | place detail     | PlaceTable.PlaceID                    |
+| 15        | _NOT-IMP RM v>7  |                                       |
+| 18        | Task Folder      |                                       |
+| 19        | association      | FANTable.FanID                        |
+| 20        |                  | TagTable.TagValue, GroupTable.GroupID |
 
 5 & 14 both point to PlaceTable.PlaceID \
 PlaceTable.PlaceType distinguishes the 3 types of places.
+
+| Table   | RecType                        | OwnerType | OwnerID                               |
+| ------- | ------------------------------ | --------- | ------------------------------------- |
+| Payload | 1        (SavedCriteriaSearch) | 8         | 0                                     |
+| Payload | 2        (SavedCriteriaGroup)  | 20        | TagTable.TagValue, GroupTable.GroupID |
+
 
 
 | Proof | level     |

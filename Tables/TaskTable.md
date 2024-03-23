@@ -32,25 +32,25 @@ CREATE INDEX idxTaskName ON TaskTable (Name);
 
 ## Notes
 
-| #   | Name       | Note           |
-| --- | ---------- | -------------- |
-| 1   | TaskID     | _PK            |
-| 2   | TaskType   | _LOOKUP        |
-| 3   | RefNumber  | _TEXT-SL       |
-| 4   | Name       | _TEXT-SL  _RNC |
-| 5   | Status     | _LOOKUP        |
-| 6   | Priority   | _LOOKUP        |
-| 7   | Date1      | _STD           |
-| 8   | Date2      | _STD           |
-| 9   | Date3      | _STD           |
-| 10  | SortDate1  | BIGINT         |
-| 11  | SortDate2  | BIGINT         |
-| 12  | SortDate3  | BIGINT         |
-| 13  | Filename   | _TEXT-SL       |
-| 14  | Details    | _TEXT-ML       |
-| 15  | Results    | _TEXT-ML       |
-| 16  | UTCModDate | _STD           |
-| 17  | Exclude    |                |
+| #   | Name       | Note            |
+| --- | ---------- | --------------- |
+| 1   | TaskID     | _PK             |
+| 2   | TaskType   | _LOOKUP         |
+| 3   | RefNumber  | _TEXT-SL        |
+| 4   | Name       | _TEXT-SL  _RMNC |
+| 5   | Status     | _LOOKUP         |
+| 6   | Priority   | _LOOKUP         |
+| 7   | Date1      | _STD            |
+| 8   | Date2      | _STD            |
+| 9   | Date3      | _STD            |
+| 10  | SortDate1  | BIGINT          |
+| 11  | SortDate2  | BIGINT          |
+| 12  | SortDate3  | BIGINT          |
+| 13  | Filename   | _TEXT-SL        |
+| 14  | Details    | _TEXT-ML        |
+| 15  | Results    | _TEXT-ML        |
+| 16  | UTCModDate | _STD            |
+| 17  | Exclude    |                 |
 
 
 Filename      | A path to a file, absolute path. Not connected to media gallery

@@ -22,15 +22,15 @@ CREATE INDEX idxFANTypeName ON FANTypeTable (Name);
  
 ## Notes
 
-| #   | Name       | Note     |
-| --- | ---------- | -------- |
-| 1   | FANTypeID  | _PK      |
-| 2   | Name       | _TEXT-SL |
-| 3   | Role1      | _TEXT-SL |
-| 4   | Role2      | _TEXT-SL |
-| 5   | Sentence1  | _TEXT-SL |
-| 6   | Sentence2  | _TEXT-SL |
-| 7   | UTCModDate | _STD     |
+| #   | Name       | Note            |
+| --- | ---------- | --------------- |
+| 1   | FANTypeID  | _PK             |
+| 2   | Name       | _TEXT-SL  _RMNC |
+| 3   | Role1      | _TEXT-SL        |
+| 4   | Role2      | _TEXT-SL        |
+| 5   | Sentence1  | _TEXT-SL        |
+| 6   | Sentence2  | _TEXT-SL        |
+| 7   | UTCModDate | _STD            |
 
 A FAN type relationship has a name and a name for each of the two roles.
 
@@ -38,3 +38,5 @@ There is a sentence template used to constuct the sentence used in a narative re
 
 
 ## Open Questions
+
+### DONE 1

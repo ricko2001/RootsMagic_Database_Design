@@ -25,30 +25,143 @@ CREATE INDEX idxPayloadType ON PayloadTable (RecType);
 | #   | Name       | Note     |
 | --- | ---------- | -------- |
 | 1   | RecID      | _PK      |
-| 2   | RecType    | _LOOKUP   |
+| 2   | RecType    | _LOOKUP  |
 | 3   | OwnerType  | _PFK-TYP |
 | 4   | OwnerID    | _PFK     |
 | 5   | Title      |          |
-| 6   | DataRec    |          |
+| 6   | DataRec    | XML      |
 | 7   | UTCModDate | _STD     |
 
 
 PayloadTable
 New table added in support of Saved Criteria Search and Saved Criteria Group.
 
-OwnerType
-New OwnerType values have been added in support of the new tables. These will be identified as encountered through usage and testing.
+In RM GUI, 
+* Saved Search Criteria
+Advanced search, list show by clicking button "Saved searches".\
+OwnerType =8 OwnerID=0  _SPECIAL-CASE
+* Saved Group Criteria\
+Groups window/ Edit an existing group/ Saved criteria.
 
-https://sqlitetoolsforrootsmagic.com/rm9-data-definitions/
+
+
+Sample XML RecType=1
+```
+<Root>
+    <MatchCase>false</MatchCase>
+    <Criteria0>
+        <Join>0</Join>
+        <Field>10001</Field>
+        <FieldType>2</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>2</Compare>
+        <Value>1922</Value>
+    </Criteria0>
+    <Criteria1>
+        <Join>0</Join>
+        <Field>10002</Field>
+        <FieldType>6</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria1>
+    <Criteria2>
+        <Join>0</Join>
+        <Field>7002</Field>
+        <FieldType>0</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>1</Compare>
+        <Value></Value>
+    </Criteria2>
+    <Criteria3>
+        <Join>0</Join>
+        <Field>10001</Field>
+        <FieldType>3</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>2</Compare>
+        <Value>deutschland</Value>
+    </Criteria3>
+    <Criteria4>
+        <Join>0</Join>
+        <Field>0</Field>
+        <FieldType>0</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria4>
+    <Criteria5>
+        <Join>0</Join>
+        <Field>0</Field>
+        <FieldType>0</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria5>
+</Root>
+```
+
+Sample XML RecType=2 OwnerType=20
+OwnerID ==> TagTable.TagValue, GroupTable.GroupID
+```
+<Root>
+    <MatchCase>false</MatchCase>
+    <Criteria0>
+        <Join>0</Join>
+        <Field>10001</Field>
+        <FieldType>6</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria0>
+    <Criteria1>
+        <Join>0</Join>
+        <Field>0</Field>
+        <FieldType>0</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria1>
+    <Criteria2>
+        <Join>0</Join>
+        <Field>0</Field>
+        <FieldType>0</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria2>
+    <Criteria3>
+        <Join>0</Join>
+        <Field>0</Field>
+        <FieldType>0</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria3>
+    <Criteria4>
+        <Join>0</Join>
+        <Field>0</Field>
+        <FieldType>0</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria4>
+    <Criteria5>
+        <Join>0</Join>
+        <Field>0</Field>
+        <FieldType>0</FieldType>
+        <OwnerType>0</OwnerType>
+        <Compare>0</Compare>
+        <Value></Value>
+    </Criteria5>
+</Root>
+```
 
 ## Lookup Tables
 
-```
-Table    RecType                  OwnerType    OwnerID    
-Payload    1 (SavedCriteriaSearch)    8    0    
-Payload    2 (SavedCriteriaGroup)    20    TagTable.TagValue, GroupTable.GroupID    
-FANTable        19    CitationLinkTable, MediaLinkTable,…    
-```
+| RecType | meaning               |
+| :------ | :-------------------- |
+| 1       | saved search criteria |
+| 2       | saved group criteria  |
 
 
 

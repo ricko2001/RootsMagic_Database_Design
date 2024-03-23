@@ -27,7 +27,7 @@ CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;
 | #   | Name       | Note                                               |
 | --- | ---------- | -------------------------------------------------- |
 | 1   | SourceID   | _PK                                                |
-| 2   | Name       | _TEXT-SL _RNC                                      |
+| 2   | Name       | _TEXT-SL  _RMNC                                    |
 | 3   | RefNumber  | _TEXT-SL                                           |
 | 4   | ActualText | _TEXT-ML                                           |
 | 5   | Comments   | _TEXT-ML                                           |

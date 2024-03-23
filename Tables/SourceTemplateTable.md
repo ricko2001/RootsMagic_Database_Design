@@ -25,18 +25,18 @@ CREATE INDEX idxSourceTemplateName ON SourceTemplateTable (Name);
 
 ## Notes
 
-| #   | Name          | Type     |
-| --- | ------------- | -------- |
-| 1   | TemplateID    | _PK      |
-| 2   | Name          | _TEXT-SL |
-| 3   | Description   | _TEXT-SL |
-| 4   | Favorite      | _LOOKUP   |
-| 5   | Category      | _TEXT-SL |
-| 6   | Footnote      | _TEXT-SL |
-| 7   | ShortFootnote | _TEXT-SL |
-| 8   | Bibliography  | _TEXT-SL |
-| 9   | FieldDefs     | XML      |
-| 10  | UTCModDate    | _STD     |
+| #   | Name          | Type            |
+| --- | ------------- | --------------- |
+| 1   | TemplateID    | _PK             |
+| 2   | Name          | _TEXT-SL  _RMNC |
+| 3   | Description   | _TEXT-SL        |
+| 4   | Favorite      | _LOOKUP         |
+| 5   | Category      | _TEXT-SL        |
+| 6   | Footnote      | _TEXT-SL        |
+| 7   | ShortFootnote | _TEXT-SL        |
+| 8   | Bibliography  | _TEXT-SL        |
+| 9   | FieldDefs     | XML             |
+| 10  | UTCModDate    | _STD            |
 
 No prohibition against duplicate Names.\
 Names may have leading, trailing, embedded spaces.
