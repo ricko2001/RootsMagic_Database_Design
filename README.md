@@ -21,5 +21,5 @@ The forum format allows a easy exchange of ideas and posting of SQL statements, 
 does not lend itself towards creating documentation and keeping it current and fixing errors.
 That's why I am starting this project where anyone can contribute, fix errors, and fill in the gaps.
 Everything is under version control, so we can keep current docs for all future RM releases
- in separate branches.
+in separate branches or perhaps create point-in-time "releases" that may be more easily accessed.
 
