@@ -72,7 +72,6 @@ CREATE INDEX idxSurnameMP ON NameTable (SurnameMP);
 | 12  | IsPrivate  | _STD                         |
 | 13  | Proof      | _STD                         |
 | 14  | Sentence   | _TEXT-SL                     |
-| 14  | Sentence   | _TEXT-SL                     |
 | 15  | Note       | _STD                         |
 | 16  | BirthYear  | _TEXT-SL                     |
 | 17  | DeathYear  | _TEXT-SL                     |
