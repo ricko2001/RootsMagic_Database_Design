@@ -2,13 +2,14 @@
 
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE TaskLinkTable (LinkID INTEGER PRIMARY KEY, TaskID INTEGER, OwnerType INTEGER, OwnerID INTEGER, UTCModDate FLOAT );
 
 CREATE INDEX idxTaskOwnerID ON TaskLinkTable (OwnerID);
 ```
 
 ## Purpsoe
+
 Handles linking of Tasks to owning - Person, Event etc
 and 
 linking of task to a folder name (TagTable)

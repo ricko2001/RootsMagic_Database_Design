@@ -1,8 +1,12 @@
 # AddressLinkTable
 
+## Purpose
+
+Links Address/Repositories to the objects that use them. People or Sources.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE AddressLinkTable (LinkID INTEGER PRIMARY KEY, OwnerType INTEGER, AddressID INTEGER, OwnerID INTEGER, AddressNum INTEGER, Details TEXT, UTCModDate FLOAT );
 ```
 
@@ -29,6 +33,9 @@ CREATE TABLE AddressLinkTable (LinkID INTEGER PRIMARY KEY, OwnerType INTEGER, Ad
 | 5   | AddressNum |                                |
 | 6   | Details    | _TEXT-ML                       |
 | 7   | UTCModDate | _STD                           |
+
+OwnerType is either 0 or 3.
+Address of AddressType 0 links to people 0, address/repository of type 1 links to sources.
 
 ## Open Questions
 

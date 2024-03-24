@@ -1,8 +1,12 @@
 # AddressTable
 
+## Purpose
+
+Holds address information. Can be interpreted as a person's mailing address or as a repository for a source.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE AddressTable (AddressID INTEGER PRIMARY KEY, AddressType INTEGER, Name TEXT COLLATE RMNOCASE, Street1 TEXT, Street2 TEXT, City TEXT, State TEXT, Zip TEXT, Country TEXT, Phone1 TEXT, Phone2 TEXT, Fax TEXT, Email TEXT, URL TEXT, Latitude INTEGER, Longitude INTEGER, Note TEXT, UTCModDate FLOAT );
 
 CREATE INDEX idxAddressName ON AddressTable (Name);
@@ -54,13 +58,12 @@ CREATE INDEX idxAddressName ON AddressTable (Name);
 | 17  | Note        | _TEXT-ML        |
 | 18  | UTCModDate  | _STD            |
 
-
 | AddressType | Type                   |
 | ----------- | ---------------------- |
 | 0           | address for person     |
 | 1           | address for repository |
 
-
 ## Open Questions
+
 
 ### DONE 1

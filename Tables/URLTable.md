@@ -2,7 +2,7 @@
 
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE URLTable (LinkID INTEGER PRIMARY KEY, OwnerType INTEGER, OwnerID INTEGER, LinkType INTEGER, Name TEXT, URL TEXT, Note TEXT, UTCModDate FLOAT );
 ```
 

@@ -1,8 +1,12 @@
 # AncestryTable
 
+## Purpose
+
+Stores the linkage information for a RootsMagic person and an Ancestry.com person.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE AncestryTable (LinkID INTEGER PRIMARY KEY, LinkType INTEGER, rmID INTEGER, anID TEXT, Modified INTEGER, anVersion TEXT, anDate FLOAT, Status INTEGER, UTCModDate FLOAT );
 
 CREATE INDEX idxLinkAncestryRmId ON AncestryTable (rmID);

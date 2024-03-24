@@ -2,7 +2,7 @@
 
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE SourceTable (SourceID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, RefNumber TEXT, ActualText TEXT, Comments TEXT, IsPrivate INTEGER, TemplateID INTEGER, Fields BLOB, UTCModDate FLOAT );
 
 CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;

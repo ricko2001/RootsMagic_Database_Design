@@ -1,8 +1,12 @@
 # ChildTable
 
+## Purpose
+
+Link table between Family Table and Persons. Establishes parent-child relationships,
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE ChildTable (RecID INTEGER PRIMARY KEY, ChildID INTEGER, FamilyID INTEGER, RelFather INTEGER, RelMother INTEGER, ChildOrder INTEGER, IsPrivate INTEGER, ProofFather INTEGER, ProofMother INTEGER, Note TEXT, UTCModDate FLOAT );
 
 CREATE INDEX idxChildOrder ON ChildTable (ChildOrder);

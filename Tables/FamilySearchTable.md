@@ -1,8 +1,12 @@
 # FamilySearchTable
 
+## Purpose
+
+Stores linage information between a RootsMagic person and a FamilySearch Family Tree person.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE FamilySearchTable (LinkID INTEGER PRIMARY KEY, LinkType INTEGER, rmID INTEGER, fsID TEXT, Modified INTEGER, fsVersion TEXT, fsDate FLOAT, Status INTEGER, UTCModDate FLOAT );
 
 CREATE INDEX idxLinkRmId ON FamilySearchTable (rmID);

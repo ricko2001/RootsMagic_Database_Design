@@ -1,8 +1,12 @@
 # CitationLinkTable
 
+## Purpose
+
+Links Citations to objects that can use them, facts, Person, Family, Task etc?
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE CitationLinkTable (LinkID INTEGER PRIMARY KEY, CitationID INTEGER, OwnerType INTEGER, OwnerID INTEGER, SortOrder INTEGER, Quality TEXT, IsPrivate INTEGER, Flags INTEGER, UTCModDate FLOAT );
 
 CREATE INDEX idxCitationLinkOwnerID ON CitationLinkTable (OwnerID);

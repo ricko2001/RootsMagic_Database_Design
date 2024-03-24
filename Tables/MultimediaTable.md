@@ -2,7 +2,7 @@
 
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE MultimediaTable (MediaID INTEGER PRIMARY KEY, MediaType INTEGER, MediaPath TEXT, MediaFile TEXT COLLATE RMNOCASE, URL TEXT, Thumbnail BLOB, Caption TEXT COLLATE RMNOCASE, RefNumber TEXT COLLATE RMNOCASE, Date TEXT, SortDate BIGINT, Description TEXT, UTCModDate FLOAT );
 
 CREATE INDEX idxMediaFile ON MultimediaTable (MediaFile);

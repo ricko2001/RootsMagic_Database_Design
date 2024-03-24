@@ -2,7 +2,7 @@
 
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE RoleTable (RoleID INTEGER PRIMARY KEY, RoleName TEXT COLLATE RMNOCASE, EventType INTEGER, RoleType INTEGER, Sentence TEXT, UTCModDate FLOAT );
 
 CREATE INDEX idxRoleEventType ON RoleTable (EventType);

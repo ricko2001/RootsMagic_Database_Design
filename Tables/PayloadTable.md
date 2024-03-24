@@ -1,8 +1,12 @@
 # PayloadTable
 
+## Purpose
+
+New table in v9 added in support of Saved Criteria Search and Saved Criteria Group.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE PayloadTable (RecID INTEGER PRIMARY KEY, RecType INTEGER, OwnerType INTEGER, OwnerID INTEGER, Title TEXT, DataRec BLOB, UTCModDate FLOAT );
 
 CREATE INDEX idxPayloadType ON PayloadTable (RecType);
@@ -34,7 +38,6 @@ CREATE INDEX idxPayloadType ON PayloadTable (RecType);
 
 
 PayloadTable
-New table added in support of Saved Criteria Search and Saved Criteria Group.
 
 In RM GUI, 
 * Saved Search Criteria
@@ -43,10 +46,9 @@ OwnerType =8 OwnerID=0  _SPECIAL-CASE
 * Saved Group Criteria\
 Groups window/ Edit an existing group/ Saved criteria.
 
-
-
 Sample XML RecType=1
-```
+
+``` XML
 <Root>
     <MatchCase>false</MatchCase>
     <Criteria0>
@@ -102,7 +104,8 @@ Sample XML RecType=1
 
 Sample XML RecType=2 OwnerType=20
 OwnerID ==> TagTable.TagValue, GroupTable.GroupID
-```
+
+``` XML
 <Root>
     <MatchCase>false</MatchCase>
     <Criteria0>
@@ -162,8 +165,6 @@ OwnerID ==> TagTable.TagValue, GroupTable.GroupID
 | :------ | :-------------------- |
 | 1       | saved search criteria |
 | 2       | saved group criteria  |
-
-
 
 ## Open Questions
 

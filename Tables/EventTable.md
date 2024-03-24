@@ -1,8 +1,12 @@
 # EventTable
 
+## Purpose
+
+Stores Fact/Event data, including the type of fact, the owner- Person or family, Note and comments.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE EventTable (EventID INTEGER PRIMARY KEY, EventType INTEGER, OwnerType INTEGER, OwnerID INTEGER, FamilyID INTEGER, PlaceID INTEGER, SiteID INTEGER, Date TEXT, SortDate BIGINT, IsPrimary INTEGER, IsPrivate INTEGER, Proof INTEGER, Status INTEGER, Sentence TEXT, Details TEXT, Note TEXT, UTCModDate FLOAT );
 
 CREATE INDEX idxOwnerEvent ON EventTable (OwnerID,EventType);
@@ -55,17 +59,16 @@ CREATE INDEX idxOwnerDate ON EventTable (OwnerID,SortDate);
 | 16  | Note       | _TEXT-ML                         |
 | 17  | UTCModDate | _STD                             |
 
-
 OwnerType
 Types seen in database-
-0 Person, 1 Family/couple 
+0 Person, 1 Family/couple.
 
-FamilyID        no longer used in current design
+FamilyID        not used in current design
 
-PlaceID   points to place
-SiteID    points to place deatil
-SiteID ,  0 if no detail specified
-          HOWEVER, due to TMG import by RM, SiteID was set to -1 when no Place Deatail specified.
+PlaceID   points to place\
+SiteID    points to place detail\
+SiteID ,  0 if no detail specified\
+          HOWEVER, due to TMG import by RM, SiteID was set to -1 when no Place Detail specified.
 
 OwnerEventType  This is redundant with the EventType which also says what kind of event it is.
 

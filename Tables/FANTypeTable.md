@@ -1,8 +1,12 @@
 # FANTypeTable
 
+## Purpose
+
+Stores the tpes of Associations, both builtin and custom. Including the sentence template used in reports.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE FANTypeTable (FANTypeID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, Role1 TEXT, Role2 TEXT, Sentence1 TEXT, Sentence2 TEXT, UTCModDate FLOAT );
 
 CREATE INDEX idxFANTypeName ON FANTypeTable (Name);

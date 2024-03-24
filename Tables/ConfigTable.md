@@ -1,8 +1,12 @@
 # ConfigTable
 
+## Purpose
+
+Holds RM app configuration data. No genealogical data.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE ConfigTable (RecID INTEGER PRIMARY KEY, RecType INTEGER, Title TEXT, DataRec BLOB, UTCModDate FLOAT );
 
 CREATE INDEX idxRecType ON ConfigTable (RecType);

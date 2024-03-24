@@ -1,8 +1,12 @@
 # ExclusionTable
 
+## Purpose
+
+Hold info on people who are not duplicates, used by auto merge feature and people who have problems to ignore.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE ExclusionTable (RecID INTEGER PRIMARY KEY, ExclusionType INTEGER, ID1 INTEGER, ID2 INTEGER, UTCModDate FLOAT );
 
 CREATE UNIQUE INDEX idxExclusionIndex ON ExclusionTable (ExclusionType, ID1, ID2);

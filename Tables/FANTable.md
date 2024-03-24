@@ -1,8 +1,12 @@
 # FANTable
 
+## Purpose
+
+Stores association linkage information.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE FANTable (FanID INTEGER PRIMARY KEY, ID1 INTEGER, ID2 INTEGER, FanTypeID INTEGER, PlaceID INTEGER, SiteID INTEGER, Date TEXT, SortDate BIGINT, Description TEXT, Note TEXT, UTCModDate FLOAT );
 
 CREATE INDEX idxFanId2 ON FANTable (ID2);

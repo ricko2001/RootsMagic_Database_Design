@@ -1,8 +1,12 @@
 # CitationTable
 
+## Purpose
+
+Stores citation information, mainly in the XML column, as well as citation notes and comments.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE CitationTable (CitationID INTEGER PRIMARY KEY, SourceID INTEGER, Comments TEXT, ActualText TEXT, RefNumber TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT, Fields BLOB, UTCModDate FLOAT, CitationName TEXT COLLATE RMNOCASE );
 
 CREATE INDEX idxCitationName ON CitationTable (CitationName);
@@ -38,7 +42,7 @@ CREATE INDEX idxCitationSourceID ON CitationTable (SourceID);
 | 6   | Footnote      | _TEXT-SL                     |
 | 7   | ShortFootnote | _TEXT-SL                     |
 | 8   | Bibliography  | _TEXT-SL                     |
-| 9   | Fields        | BLOB XML                     |
+| 9   | Fields        |  XML                         |
 | 10  | UTCModDate    | _STD                         |
 | 11  | CitationName  | TEXT-SL  _RMNC               |
 

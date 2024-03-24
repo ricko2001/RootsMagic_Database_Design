@@ -1,8 +1,12 @@
 # FactTypeTable
 
+## Purpose
+
+Store the types of facts, both builtin and custom. Includes info on how and when to display them.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE FactTypeTable (FactTypeID INTEGER PRIMARY KEY, OwnerType INTEGER, Name TEXT COLLATE RMNOCASE, Abbrev TEXT, GedcomTag TEXT, UseValue INTEGER, UseDate INTEGER, UsePlace INTEGER, Sentence TEXT, Flags INTEGER, UTCModDate FLOAT );
 
 CREATE INDEX idxFactTypeAbbrev ON FactTypeTable (Abbrev);

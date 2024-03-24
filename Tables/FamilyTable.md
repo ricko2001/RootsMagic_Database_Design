@@ -1,8 +1,12 @@
 # FamilyTable
 
+## Purpose
+
+Stores info on all families/couples.
+
 ## Table DDL
 
-```
+``` SQL
 CREATE TABLE FamilyTable (FamilyID INTEGER PRIMARY KEY, FatherID INTEGER, MotherID INTEGER, ChildID INTEGER, HusbOrder INTEGER, WifeOrder INTEGER, IsPrivate INTEGER, Proof INTEGER, SpouseLabel INTEGER, FatherLabel INTEGER, MotherLabel INTEGER, SpouseLabelStr TEXT, FatherLabelStr TEXT, MotherLabelStr TEXT, Note TEXT, UTCModDate FLOAT );
 
 CREATE INDEX idxFamilyMotherID ON FamilyTable (MotherID);
