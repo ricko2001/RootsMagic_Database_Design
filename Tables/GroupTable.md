@@ -1,5 +1,9 @@
 # GroupTable
 
+## Purpose
+
+Holds data on Person Groups created in RootsMagic. Group names are elsewhere.
+
 ## Table DDL
 
 ``` SQL

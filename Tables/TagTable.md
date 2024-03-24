@@ -2,6 +2,10 @@
 
 ## Table DDL
 
+## Purpose
+
+Stores names used by other objects- Groups, task folders.
+
 ``` SQL
 CREATE TABLE TagTable (TagID INTEGER PRIMARY KEY, TagType INTEGER, TagValue INTEGER, TagName TEXT COLLATE RMNOCASE, Description TEXT, UTCModDate FLOAT );
 

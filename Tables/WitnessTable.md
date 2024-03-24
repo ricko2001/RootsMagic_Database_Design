@@ -1,5 +1,9 @@
 # WitnessTable
 
+## Purpose
+
+Stores witness information. Implements the shared fact system. Also may contain names of people, but not considered to be "in the database".
+
 ## Table DDL
 
 ``` SQL
@@ -37,7 +41,7 @@ CREATE INDEX idxWitnessEventID ON WitnessTable (EventID);
 | 4   | WitnessOrder | _NOT-IMP        sort order                 |
 | 5   | Role         | _FK ==> RoleTable.RoleID                   |
 | 6   | Sentence     | _TEXT-SL                                   |
-| 7   | Note         | _TEXT-ML                                   |
+| 7   | Note         | _STD                                       |
 | 8   | Given        | _TEXT-SL  _RMNC                            |
 | 9   | Surname      | _TEXT-SL  _RMNC                            |
 | 10  | Prefix       | _TEXT-SL  _RMNC                            |
@@ -64,6 +68,7 @@ WitnessOrder  | _NOT-IMP        sort order  Test this TODO
 
 Sentence      If not NULL, custom sentence used instead of the RoleTable's sentence
 
+Note  appears just as a standard fact note.
 
 
 | col     | use                                   |

@@ -1,5 +1,9 @@
 # URLTable
 
+## Purpose
+
+Stores web URL items. These link directly to using objects.
+
 ## Table DDL
 
 ``` SQL
@@ -8,29 +12,31 @@ CREATE TABLE URLTable (LinkID INTEGER PRIMARY KEY, OwnerType INTEGER, OwnerID IN
 
 ## Columns List
 
-| #  | Name          | Type      |
-|----|---------------|-----------|
-| 1  | LinkID        | INTEGER   |
-| 2  | OwnerType     | INTEGER   |
-| 3  | OwnerID       | INTEGER   |
-| 4  | LinkType      | INTEGER   |
-| 5  | Name          | TEXT      |
-| 6  | URL           | TEXT      |
-| 7  | Note          | TEXT      |
-| 8  | UTCModDate    | FLOAT     |
+| #   | Name       | Type    |
+| --- | ---------- | ------- |
+| 1   | LinkID     | INTEGER |
+| 2   | OwnerType  | INTEGER |
+| 3   | OwnerID    | INTEGER |
+| 4   | LinkType   | INTEGER |
+| 5   | Name       | TEXT    |
+| 6   | URL        | TEXT    |
+| 7   | Note       | TEXT    |
+| 8   | UTCModDate | FLOAT   |
 
 ## Notes
 
-| #  | Name          | Note      |
-|----|---------------|-----------|
-| 1  | LinkID        | _PK
-| 2  | OwnerType     | _PFK-TYPE
-| 3  | OwnerID       | _PFK
-| 4  | LinkType      | _NOT-IMP  (all 0) ?
-| 5  | Name          | _TEXT-SL
-| 6  | URL           | _TEXT-SL
-| 7  | Note          | _TEXT-ML
-| 8  | UTCModDate    | _STD
+| #   | Name       | Note                |
+| --- | ---------- | ------------------- |
+| 1   | LinkID     | _PK                 |
+| 2   | OwnerType  | _PFK-TYPE           |
+| 3   | OwnerID    | _PFK                |
+| 4   | LinkType   | _NOT-IMP  (all 0) ? |
+| 5   | Name       | _TEXT-SL            |
+| 6   | URL        | _TEXT-SL            |
+| 7   | Note       | _STDL               |
+| 8   | UTCModDate | _STD                |
+
+OwnerType- person, source, citation  ??
 
 ## Open Questions
 

@@ -1,5 +1,9 @@
 # TaskTable
 
+## Purpose
+
+Stores task items. Each is a To DO or comments on another object.
+
 ## Table DDL
 
 ``` SQL
@@ -32,28 +36,32 @@ CREATE INDEX idxTaskName ON TaskTable (Name);
 
 ## Notes
 
-| #   | Name       | Note            |
-| --- | ---------- | --------------- |
-| 1   | TaskID     | _PK             |
-| 2   | TaskType   | _LOOKUP         |
-| 3   | RefNumber  | _TEXT-SL        |
-| 4   | Name       | _TEXT-SL  _RMNC |
-| 5   | Status     | _LOOKUP         |
-| 6   | Priority   | _LOOKUP         |
-| 7   | Date1      | _STD            |
-| 8   | Date2      | _STD            |
-| 9   | Date3      | _STD            |
-| 10  | SortDate1  | BIGINT          |
-| 11  | SortDate2  | BIGINT          |
-| 12  | SortDate3  | BIGINT          |
-| 13  | Filename   | _TEXT-SL        |
-| 14  | Details    | _TEXT-ML        |
-| 15  | Results    | _TEXT-ML        |
-| 16  | UTCModDate | _STD            |
-| 17  | Exclude    |                 |
+| #   | Name       | Note                           |
+| --- | ---------- | ------------------------------ |
+| 1   | TaskID     | _PK                            |
+| 2   | TaskType   | _LOOKUP                        |
+| 3   | RefNumber  | _TEXT-SL                       |
+| 4   | Name       | _TEXT-SL  _RMNC                |
+| 5   | Status     | _LOOKUP                        |
+| 6   | Priority   | _LOOKUP                        |
+| 7   | Date1      | _STD  GUI-LAB="Start Date"     |
+| 8   | Date2      | _STD  GUI-LAB="Last edit Date" |
+| 9   | Date3      | _STD  GUI-LAB="End Date"       |
+| 10  | SortDate1  | BIGINT  _NOT-IMP                       |
+| 11  | SortDate2  | BIGINT  _NOT-IMP                       |
+| 12  | SortDate3  | BIGINT  _NOT-IMP                       |
+| 13  | Filename   | _TEXT-SL                       |
+| 14  | Details    | _STD  _GUI-LAB="Goals/Details" |
+| 15  | Results    | _STD                           |
+| 16  | UTCModDate | _STD                           |
+| 17  | Exclude    |                                |
 
+Date fields seem to operate normally, however the Sort fields act strangely. TODO
 
 Filename      | A path to a file, absolute path. Not connected to media gallery
+
+Details is only displayed as "Folder description" when linked to a Task folder (TagTable)
+It should be renamed to Note in the database. (Other Details fields are designed to be single line text)
 
 TODO SortDate1 to SortDate3\
     not std dates or sort dates
@@ -66,7 +74,7 @@ Exclude   TODO  ??
 
 | TaskType | Name           |
 | -------- | -------------- |
-| 0        | <unspecified>  |
+| 0        | [unspecified]  |
 | 1        | Research       |
 | 2        | To-Do          |
 | 3        | Correspondence |
@@ -98,5 +106,7 @@ Exclude   TODO  ??
 ## Open Questions
 
 What is the Exclude column for?
+
+Are SortDate field updates acting in a useful way
 
 ### DONE 1

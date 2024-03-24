@@ -53,7 +53,7 @@ CREATE INDEX idxFamilyFatherID ON FamilyTable (FatherID);
 | 12  | SpouseLabelStr | _TEXT-SL                     |
 | 13  | FatherLabelStr | _TEXT-SL                     |
 | 14  | MotherLabelStr | _TEXT-SL                     |
-| 15  | Note           | _TEXT-ML                     |
+| 15  | Note           | _STD                         |
 | 16  | UTCModDate     | _STD                         |
 
 More details- see ChildTable
@@ -64,7 +64,10 @@ There is not supposed to be a personID = 0 in PersonTable.
 
 HusbOrder, WifeOrder       _NOT-IMP  TODO
 
-Proof is in regards to them being a couple. (?)
+
+Proof is in regards to them being a couple. (?)  Is 
+Note is displayed in Person edit window when either spouse or parent family selected.
+Proof and Edit are describing the FamilyTable record.
 
 ## Open Questions
 

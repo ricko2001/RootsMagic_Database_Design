@@ -31,11 +31,13 @@ CREATE TABLE AddressLinkTable (LinkID INTEGER PRIMARY KEY, OwnerType INTEGER, Ad
 | 3   | AddressID  | _FK ==> AddressTable.AddressID |
 | 4   | OwnerID    | _PFK                           |
 | 5   | AddressNum |                                |
-| 6   | Details    | _TEXT-ML                       |
+| 6   | Details    | _NOT-IMPL                       |
 | 7   | UTCModDate | _STD                           |
 
-OwnerType is either 0 or 3.
-Address of AddressType 0 links to people 0, address/repository of type 1 links to sources.
+OwnerType is either 0, 1 or 3.
+In person edit window, can attach an address to the person, his spouse (family) and parents (family)
+
+Address of AddressType 0 links to people 0 or 1 family, address/repository of type 1 links to sources.
 
 ## Open Questions
 

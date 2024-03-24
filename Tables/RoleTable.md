@@ -1,5 +1,9 @@
 # RoleTable
 
+## Purpose
+
+Stores the names of roles played by witnesses and the sentence template used in reports.
+
 ## Table DDL
 
 ``` SQL

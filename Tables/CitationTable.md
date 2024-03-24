@@ -36,8 +36,8 @@ CREATE INDEX idxCitationSourceID ON CitationTable (SourceID);
 | --- | ------------- | ---------------------------- |
 | 1   | CitationID    | _PK                          |
 | 2   | SourceID      | _FK ==> SourceTable.SourceID |
-| 3   | Comments      | _TEXT-ML                     |
-| 4   | ActualText    | _TEXT-ML                     |
+| 3   | Comments      | _STD                         |
+| 4   | ActualText    | _STD                         |
 | 5   | RefNumber     | _TEXT-SL                     |
 | 6   | Footnote      | _TEXT-SL                     |
 | 7   | ShortFootnote | _TEXT-SL                     |

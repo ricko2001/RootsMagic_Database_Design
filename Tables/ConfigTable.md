@@ -41,7 +41,7 @@ UTCModDate FLOAT
 
 
 RecType
-1    main config                    Title=<blank>
+1    main config                    Title=[blank]
 3    custom report settings        Title=custom report user specified name
 4    ??                            Title=MAIN & 1            
 5    predefined report settings    Title=report name
@@ -114,7 +114,7 @@ RecType
 
 
 
-RecType=1    Title= <blank>
+RecType=1    Title= [blank]
 
 data=
 

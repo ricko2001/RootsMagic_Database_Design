@@ -1,5 +1,9 @@
 # NameTable
 
+## Purpose
+
+Stores person names, both primary and alternate. Also contains some denormalized data.
+
 ## Table DDL
 
 ``` SQL
@@ -69,7 +73,7 @@ CREATE INDEX idxSurnameMP ON NameTable (SurnameMP);
 | 13  | Proof      | _STD                         |
 | 14  | Sentence   | _TEXT-SL                     |
 | 14  | Sentence   | _TEXT-SL                     |
-| 15  | Note       | _TEXT-ML                     |
+| 15  | Note       | _STD                         |
 | 16  | BirthYear  | _TEXT-SL                     |
 | 17  | DeathYear  | _TEXT-SL                     |
 | 18  | Display    | _NOT-IMP                     |

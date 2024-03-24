@@ -45,7 +45,7 @@ CREATE INDEX idxChildFamilyID ON ChildTable (FamilyID);
 | 7   | IsPrivate   | _STD _GUI_LAB=none           |
 | 8   | ProofFather | _STD (Proof)                 |
 | 9   | ProofMother | _STD (Proof)                 |
-| 10  | Note        | _TEXT-ML                     |
+| 10  | Note        | _NOT-IMPL                    |
 | 11  | UTCModDate  | _STD                         |
 
 The ChildTable and FamilyTable are the basis for all family relationships
@@ -67,6 +67,7 @@ IsPrivate   not in RM user interface.
 
 Proof- Note that there is a separate proof value for father & mother
 
+Note field is not displayed in the RM GUI.
 
 Complaint
 CitationLinkTable not allowed to link to ChildTable record, but that is where evidence for a connection should go.

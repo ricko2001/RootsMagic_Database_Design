@@ -43,7 +43,7 @@ CREATE INDEX idxFanId1 ON FANTable (ID1);
 | 7   | Date        | _STD                           |
 | 8   | SortDate    | _STD                           |
 | 9   | Description | _TEXT-SL                       |
-| 10  | Note        | _TEXT-ML                       |
+| 10  | Note        | _STD                           |
 | 11  | UTCModDate  | _STD                           |
 
 ## Open Questions

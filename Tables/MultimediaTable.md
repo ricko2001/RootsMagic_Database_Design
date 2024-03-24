@@ -1,5 +1,9 @@
 # MultimediaTable
 
+## Purpose
+
+Pointers to the external media file.
+
 ## Table DDL
 
 ``` SQL

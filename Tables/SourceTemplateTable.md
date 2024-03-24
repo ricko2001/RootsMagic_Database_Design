@@ -1,5 +1,9 @@
 # SourceTemplateTable
 
+## Purpose
+
+Stores the templates on which sources are constructed.
+
 ## Table DDL
 
 ``` SQL

@@ -55,7 +55,7 @@ CREATE INDEX idxAddressName ON AddressTable (Name);
 | 14  | URL         | _TEXT-SL        |
 | 15  | Latitude    | _STD  _NOT-IMP  |
 | 16  | Longitude   | _STD  _NOT-IMP  |
-| 17  | Note        | _TEXT-ML        |
+| 17  | Note        | _STD            |
 | 18  | UTCModDate  | _STD            |
 
 | AddressType | Type                   |

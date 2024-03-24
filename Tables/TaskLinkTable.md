@@ -1,5 +1,9 @@
 # TaskLinkTable
 
+## Purpose
+
+Links Tasks to the objects tat use them.
+
 ## Table DDL
 
 ``` SQL

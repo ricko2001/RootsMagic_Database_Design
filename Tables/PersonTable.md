@@ -1,5 +1,9 @@
 # PersonTable
 
+## Purpose
+
+Stores records each of which represent a single person. Can be considered the most fundamental table
+
 ## Table DDL
 
 ``` SQL
@@ -57,11 +61,11 @@ CREATE TABLE PersonTable (PersonID INTEGER PRIMARY KEY, UniqueID TEXT, Sex INTEG
 | 16  | Relate1    | Relationship info                       |
 | 17  | Relate2    | Relationship info                       |
 | 18  | Flags      | _NOT-IMP                                |
-| 19  | Living     | _LOOKUP                                  |
+| 19  | Living     | _LOOKUP                                 |
 | 20  | IsPrivate  | _STD _GUI-LAB=not present               |
 | 21  | Proof      | _STD                                    |
-| 22  | Bookmark   | _LOOKUP _GUI-LAB name is in Bookmark tab |
-| 23  | Note       | _TEXT-ML _GUI-LAB="Note" person         |
+| 22  | Bookmark   | _LOOKUP                                 |
+| 23  | Note       | _STD     _GUI-LAB="Note" person         |
 | 24  | UTCModDate | _STD                                    |
 
 No indexes created for this table.
@@ -74,6 +78,7 @@ These point to a parent family and spouse family.\
 Probably these are the relationships used in reports and display as default.\
 Just changing the display to show another spouse will presumably update SpouseID.\
 
+Bookmark  _GUI-LAB name is in Bookmark tab
 
 Color columns\ 
 Each column, "" to 9 represents one of the 10 possible color "sets"\

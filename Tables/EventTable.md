@@ -56,7 +56,7 @@ CREATE INDEX idxOwnerDate ON EventTable (OwnerID,SortDate);
 | 13  | Status     | _NOT-IMP (all 0)                 |
 | 14  | Sentence   | _TEXT-SL                         |
 | 15  | Details    | _TEXT-SL                         |
-| 16  | Note       | _TEXT-ML                         |
+| 16  | Note       | _STD                             |
 | 17  | UTCModDate | _STD                             |
 
 OwnerType

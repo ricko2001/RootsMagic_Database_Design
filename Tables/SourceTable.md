@@ -1,5 +1,9 @@
 # SourceTable
 
+## Purpose
+
+Stores all research source data.
+
 ## Table DDL
 
 ``` SQL
@@ -29,8 +33,8 @@ CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;
 | 1   | SourceID   | _PK                                                |
 | 2   | Name       | _TEXT-SL  _RMNC                                    |
 | 3   | RefNumber  | _TEXT-SL                                           |
-| 4   | ActualText | _TEXT-ML                                           |
-| 5   | Comments   | _TEXT-ML                                           |
+| 4   | ActualText | _STD                                               |
+| 5   | Comments   | _STD                                               |
 | 6   | IsPrivate  | _STD                                               |
 | 7   | TemplateID | _FK =>SourceTemplateTable.TemplateID _SPECIAL-CASE |
 | 8   | Fields     | XML                                                |

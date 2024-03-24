@@ -1,32 +1,46 @@
-# RM v9.1.3 full database schema
+# RM v9.1.3
 
-Information used in the individual table files
+Information used in common by the individual table files
+
+If a table has a column that has the same properties as a column used in another table, the
+column will be labeled _STD (standard) and described once in this file.
+
+Lookup tables are usually in a database schema to describe the meaning column contents.
+For example, the sex column in PersonTable can have a value of 0,1 or 2. What do the 
+numbers mean? Check the Sex lookup table.
+
+Similarly, lookup tables used by more than one table are described here. The columns that use
+ them are also labeled _STD
+
+ TODO indicates work to be done.
+
+ Controlled Vocabulary- tokens that have a specific meaning within the document. Easily search for.
 
 ## Controlled Vocabulary
 
-| token | meaning |
-| ----- | ------- |
- RM | RootsMagic
- | GUI           | Graphical User Interface- what is displayed by RM                                     |
- | _-----------K | p-----------------------------------------------------------------------------------y |
- | _FK           | foreign key                                                                           |
- | _PFK          | polymorphic foreign key                                                               |
- | _PFK-TYPE     | polymorphic foreign key type (where does PFK point)                                   |
- | _STD          | standard colum described here                                                         |
- | _TEXT-SL      | text field designed for a single line string                                          |
- | _TEXT-ML      | text field designed for multiple lines of text. Uses CR LF line end for Win and MacOS |
- | _RMNC         | column is used in an index collated with proprietary collation RMNOCAASE              |
- | _SPECIAL-CASE | marker used to describe special case of _FK, usually 0.                               |
- | _GUI-LAB      | set to the string used to label the data in the RM GUI                                |
- | _NOT-IMP      | Not Implemented. No obvious use as of current release.                                |
- | ### DONE 1    | marker indicating work is completed for that file to standard "1"                     |
+| token         | meaning                                                                               |
+| ------------- | ------------------------------------------------------------------------------------- |
+| RM            | RootsMagic                                                                            |
+| GUI           | Graphical User Interface- what is displayed by RM                                     |
+| _PK           | Primary key                                                                           |
+| _FK           | foreign key                                                                           |
+| _PFK          | polymorphic foreign key                                                               |
+| _PFK-TYPE     | polymorphic foreign key type (where does PFK point)                                   |
+| _STD          | standard colum described here                                                         |
+| _TEXT-SL      | text field designed for a single line string                                          |
+| _TEXT-ML      | text field designed for multiple lines of text. Uses CR LF line end for Win and MacOS |
+| _RMNC         | column is used in an index collated with proprietary collation RMNOCAASE              |
+| _SPECIAL-CASE | marker used to indicate that special cases of _FK exist, usually 0.                   |
+| _GUI-LAB      | set to the string used to label the data in the RM GUI                                |
+| _NOT-IMP      | Not Implemented. No obvious use as of current release.                                |
+| ### DONE 1    | marker indicating work is completed for that file to standard "1"                     |
 
 
 ## Notes
 
 Polymorphic Associations. Using this design for polymorphism-
- * can't use relational database referential integrity mechanisms.
 
+ * can't use relational database referential integrity mechanisms.
 
 Could use-\
 unique indexes to enforce IsPrimary\
@@ -34,6 +48,15 @@ Triggers to do update of de-normalized data (BDate, DDate, Reverse (place), Name
 
 
 ## Standard Columns  _STD
+
+Several names used:
+Note
+Comments
+ActualText
+Results
+All are of type TEXT
+Multi line text. Both Windows and MacOS databases use CR LF for end of line. Both use UTF-8 encoding.
+
 
 UTCModDate	FLOAT
 Modified Julian date
@@ -49,7 +72,6 @@ DATE(UTCModDate + 2415018.5) AS Date,
 TIME(UTCModDate + 2415018.5) AS Time,
 DATETIME(UTCModDate + 2415018.5) AS DateTime
 FROM EventTable
-
 
 
 Date		TEXT
@@ -69,7 +91,6 @@ stored value   scale    actual
 W adn S are negative
 
 
-
 ## Lookup tables
 
 Polymorphic Foreign Key Type
@@ -84,12 +105,12 @@ Polymorphic Foreign Key Type
 | 5         | place            | PlaceTable.PlaceID                    |
 | 6         | task             | TaskTable.TaskID                      |
 | 7         | name             | NameTable.NameID                      |
-| 8         | 0 _SEPECIAL-CASE | <nothing>                             |
+| 8         | 0    TODO        | [nothing]  _SPECIAL-CASE              |
 | 14        | place detail     | PlaceTable.PlaceID                    |
 | 15        | _NOT-IMP RM v>7  |                                       |
 | 18        | Task Folder      |                                       |
 | 19        | association      | FANTable.FanID                        |
-| 20        |                  | TagTable.TagValue, GroupTable.GroupID |
+| 20        |    TODO          | TagTable.TagValue, GroupTable.GroupID |
 
 5 & 14 both point to PlaceTable.PlaceID \
 PlaceTable.PlaceType distinguishes the 3 types of places.
@@ -103,7 +124,7 @@ PlaceTable.PlaceType distinguishes the 3 types of places.
 
 | Proof | level     |
 | ----- | --------- |
-| 0     | <blank>   |
+| 0     | [blank]   |
 | 1     | Proven    |
 | 2     | Disproven |
 | 3     | Disputed  |

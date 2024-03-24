@@ -1,5 +1,9 @@
 # MediaLinkTable
 
+## Purpose
+
+Links between media file items and the objects that use them.
+
 ## Table DDL
 
 ``` SQL
@@ -47,7 +51,7 @@ CREATE INDEX idxMediaOwnerID ON MediaLinkTable (OwnerID);
 | 12  | RectTop    | _NOT-IMP  (all 0)                        |
 | 13  | RectRight  | _NOT-IMP  (all 0)                        |
 | 14  | RectBottom | _NOT-IMP  (all 0)                        |
-| 15  | Comments   | _TEXT-ML                                 |
+| 15  | Comments   | _STD                                     |
 | 16  | UTCModDate | _STD                                     |
 
 OwnerType's seen in database
