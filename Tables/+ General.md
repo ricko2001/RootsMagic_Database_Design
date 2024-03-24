@@ -60,7 +60,7 @@ Multi line text. Both Windows and MacOS databases use CR LF for end of line. Bot
 
 UTCModDate	FLOAT
 Modified Julian date
-see: <https://en.wikipedia.org/wiki/Julian_day?>
+see: <https://en.wikipedia.org/wiki/Julian_day>
 
 using SQLite-
 to generate current UTCModDate
@@ -88,15 +88,15 @@ for example- Oakland, CA
 stored value   scale    actual
 378044389   * 10e-7  = 37.8044389
 -1222697194 * 10e-7  = -122.2697194
-W adn S are negative
+W and S are negative
 
 
 ## Lookup tables
 
-Polymorphic Foreign Key Type
+OwnerID is a Polymorphic Foreign Key Type, OwnerType tells where it points.
 
 | OwnerType | Links to         | Table.row                             |
-| --------- | ---------------- | ------------------------------------- |
+| --------- | ---------------- | ------------------------------------ |
 | 0         | person           | PersonTable.PersonID                  |
 | 1         | family/couple    | FamilyTable.FamilyID                  |
 | 2         | fact/event       | EventTable.EventID                    |
@@ -120,8 +120,6 @@ PlaceTable.PlaceType distinguishes the 3 types of places.
 | Payload | 1        (SavedCriteriaSearch) | 8         | 0                                     |
 | Payload | 2        (SavedCriteriaGroup)  | 20        | TagTable.TagValue, GroupTable.GroupID |
 
-
-
 | Proof | level     |
 | ----- | --------- |
 | 0     | [blank]   |
@@ -139,17 +137,22 @@ PlaceTable.PlaceType distinguishes the 3 types of places.
 | 0         | No       |
 | 1         | Yes      |
 
-
-
 ## References
 
 https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form
+
+https://www.sqlite.org/datatype3.html
+Should RM tables be declared STRICT ?  What would happen? Are there speed or storage advantages?
+
+https://stackoverflow.com/questions/7337882/what-is-the-difference-between-sqlite-integer-data-types-like-int-integer-bigi
+BIGINT is just a synonym for INTEGER. It cannot be used in all statements.
+It is in no way bigger than INTEGER, it doesn't reserve more space.
 
 ## Table DDL
 
 For full database
 
-```
+``` SQL
 CREATE TABLE AddressLinkTable (LinkID INTEGER PRIMARY KEY, OwnerType INTEGER, AddressID INTEGER, OwnerID INTEGER, AddressNum INTEGER, Details TEXT, UTCModDate FLOAT );
 
 CREATE TABLE AddressTable (AddressID INTEGER PRIMARY KEY, AddressType INTEGER, Name TEXT COLLATE RMNOCASE, Street1 TEXT, Street2 TEXT, City TEXT, State TEXT, Zip TEXT, Country TEXT, Phone1 TEXT, Phone2 TEXT, Fax TEXT, Email TEXT, URL TEXT, Latitude INTEGER, Longitude INTEGER, Note TEXT, UTCModDate FLOAT );
@@ -301,10 +304,9 @@ CREATE INDEX idxWitnessEventID ON WitnessTable (EventID);
 CREATE INDEX idxWitnessPersonID ON WitnessTable (PersonID);
 ```
 
-
 ## RMNOCASE - found in DDL in these lines
 
-```
+``` SQL
 CREATE TABLE AddressTable (AddressID INTEGER PRIMARY KEY, AddressType INTEGER, Name TEXT COLLATE RMNOCASE, Street1 TEXT, Street2 TEXT, City TEXT, State TEXT, Zip TEXT, Country TEXT, Phone1 TEXT, Phone2 TEXT, Fax TEXT, Email TEXT, URL TEXT, Latitude INTEGER, Longitude INTEGER, Note TEXT, UTCModDate FLOAT );
 
 CREATE TABLE CitationTable (CitationID INTEGER PRIMARY KEY, SourceID INTEGER, Comments TEXT, ActualText TEXT, RefNumber TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT, Fields BLOB, UTCModDate FLOAT, CitationName TEXT COLLATE RMNOCASE );
