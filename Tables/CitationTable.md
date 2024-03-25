@@ -39,9 +39,9 @@ CREATE INDEX idxCitationSourceID ON CitationTable (SourceID);
 | 3   | Comments      | _STD                         |
 | 4   | ActualText    | _STD                         |
 | 5   | RefNumber     | _TEXT-SL                     |
-| 6   | Footnote      | _TEXT-SL                     |
-| 7   | ShortFootnote | _TEXT-SL                     |
-| 8   | Bibliography  | _TEXT-SL                     |
+| 6   | Footnote      | _STD                         |
+| 7   | ShortFootnote | _STD                         |
+| 8   | Bibliography  | _STD                         |
 | 9   | Fields        |  XML                         |
 | 10  | UTCModDate    | _STD                         |
 | 11  | CitationName  | TEXT-SL  _RMNC               |

@@ -44,7 +44,7 @@ CREATE INDEX idxFactTypeName ON FactTypeTable (Name);
 | 6   | UseValue   | _LOOKUP         |
 | 7   | UseDate    | _LOOKUP         |
 | 8   | UsePlace   | _LOOKUP         |
-| 9   | Sentence   | _TEXT-SL        |
+| 9   | Sentence   | _STD            |
 | 10  | Flags      |                 |
 | 11  | UTCModDate | _STD            |
 

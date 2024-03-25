@@ -33,7 +33,7 @@ Similarly, lookup tables used by more than one table are described here. The col
 | _SPECIAL-CASE | marker used to indicate that special cases of _FK exist, usually 0.                   |
 | _GUI-LAB      | set to the string used to label the data in the RM GUI                                |
 | _NOT-IMP      | Not Implemented. No obvious use as of current release.                                |
-| ### DONE 1    | marker indicating work is completed for that file to standard "1"                     |
+| ### DONE 1    | marker indicating work is completed for that file to standard level "1"                     |
 
 
 ## Notes
@@ -49,16 +49,36 @@ Triggers to do update of de-normalized data (BDate, DDate, Reverse (place), Name
 
 ## Standard Columns  _STD
 
-Several names used:
-Note
-Comments
-ActualText
-Results
-All are of type TEXT
-Multi line text. Both Windows and MacOS databases use CR LF for end of line. Both use UTF-8 encoding.
+
+### Note			TEXT
+or, also named:  Comments, ActualText, Results
+Multi line text. Both Windows and MacOS databases use CR LF for end of line. Both use UTF-8 encoding. The RM GUI 
+uses a special Note Editor for these fields.
+
+### Sentence		TEXT
+or, also named:  Sentence1, Sentence2, Footnote, ShortFootnote, Bibliography
+Generally takes one line of text in the form of a template using the RM sentence template language, 
+but there is no prohibition against multiple lines. 
+Both Windows and MacOS databases use CR LF for end of line. Both use UTF-8 encoding. 
 
 
-UTCModDate	FLOAT
+### Date		TEXT
+See other document
+
+### SortDate	BIGINT
+See other document
+
+
+### Latitude     INTEGER
+### Longitude    INTEGER
+values stored as a signed integer with a scale factor
+for example- Oakland, CA
+stored value   scale    actual
+378044389   * 10e-7  = 37.8044389
+-1222697194 * 10e-7  = -122.2697194
+W and S are negative
+
+### UTCModDate	FLOAT
 Modified Julian date
 see: <https://en.wikipedia.org/wiki/Julian_day>
 
@@ -74,26 +94,10 @@ DATETIME(UTCModDate + 2415018.5) AS DateTime
 FROM EventTable
 
 
-Date		TEXT
-See other document
-
-SortDate	BIGINT
-See other document
-
-
-Latitude     INTEGER
-Longitude    INTEGER
-values stored as a signed integer with a scale factor
-for example- Oakland, CA
-stored value   scale    actual
-378044389   * 10e-7  = 37.8044389
--1222697194 * 10e-7  = -122.2697194
-W and S are negative
-
-
 ## Lookup tables
 
-OwnerID is a Polymorphic Foreign Key Type, OwnerType tells where it points.
+### OwnerID
+is a Polymorphic Foreign Key Type, OwnerType tells where it points.
 
 | OwnerType | Links to         | Table.row                             |
 | --------- | ---------------- | ------------------------------------ |
@@ -120,6 +124,8 @@ PlaceTable.PlaceType distinguishes the 3 types of places.
 | Payload | 1        (SavedCriteriaSearch) | 8         | 0                                     |
 | Payload | 2        (SavedCriteriaGroup)  | 20        | TagTable.TagValue, GroupTable.GroupID |
 
+### Proof
+
 | Proof | level     |
 | ----- | --------- |
 | 0     | [blank]   |
@@ -127,10 +133,14 @@ PlaceTable.PlaceType distinguishes the 3 types of places.
 | 2     | Disproven |
 | 3     | Disputed  |
 
+### IsPrimary
+
 | IsPrimary | primary ? |
 | --------- | --------- |
 | 0         | No        |
 | 1         | Yes       |
+
+### IsPrivate
 
 | IsPrivate | private? |
 | --------- | -------- |

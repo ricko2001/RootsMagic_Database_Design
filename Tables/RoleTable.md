@@ -31,7 +31,7 @@ CREATE INDEX idxRoleEventType ON RoleTable (EventType);
 | 2   | RoleName   | _TEXT-SL  _RMNC      |
 | 3   | EventType  | _NOT-IMP (all 0)     |
 | 4   | RoleType   | FK ==> FactTypeTable |
-| 5   | Sentence   | _TEXT-SL             |
+| 5   | Sentence   | _STD             |
 | 6   | UTCModDate | _STD                 |
 
 RoleName  Used in GUI in Edit person window when a fact is shared, eg Spouse-Census

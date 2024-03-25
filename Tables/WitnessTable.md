@@ -40,7 +40,7 @@ CREATE INDEX idxWitnessEventID ON WitnessTable (EventID);
 | 3   | PersonID     | _FK ==> PersonTable.PersonID _SPECIAL-CASE |
 | 4   | WitnessOrder | _NOT-IMP        sort order                 |
 | 5   | Role         | _FK ==> RoleTable.RoleID                   |
-| 6   | Sentence     | _TEXT-SL                                   |
+| 6   | Sentence     | _STD                                  |
 | 7   | Note         | _STD                                       |
 | 8   | Given        | _TEXT-SL  _RMNC                            |
 | 9   | Surname      | _TEXT-SL  _RMNC                            |

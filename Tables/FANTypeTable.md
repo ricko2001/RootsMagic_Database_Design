@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stores the tpes of Associations, both builtin and custom. Including the sentence template used in reports.
+Stores the types of Associations, both builtin and custom. Including the sentence template used in reports.
 
 ## Table DDL
 
@@ -32,8 +32,8 @@ CREATE INDEX idxFANTypeName ON FANTypeTable (Name);
 | 2   | Name       | _TEXT-SL  _RMNC |
 | 3   | Role1      | _TEXT-SL        |
 | 4   | Role2      | _TEXT-SL        |
-| 5   | Sentence1  | _TEXT-SL        |
-| 6   | Sentence2  | _TEXT-SL        |
+| 5   | Sentence1  | _STD            |
+| 6   | Sentence2  | _STD            |
 | 7   | UTCModDate | _STD            |
 
 A FAN type relationship has a name and a name for each of the two roles.
