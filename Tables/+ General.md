@@ -33,7 +33,7 @@ Similarly, lookup tables used by more than one table are described here. The col
 | _SPECIAL-CASE | marker used to indicate that special cases of _FK exist, usually 0.                   |
 | _GUI-LAB      | set to the string used to label the data in the RM GUI                                |
 | _NOT-IMP      | Not Implemented. No obvious use as of current release.                                |
-| ### DONE 1    | marker indicating work is completed for that file to standard level "1"                     |
+| ### DONE 1    | marker indicating work is completed for that file to standard level "1"               |
 
 
 ## Notes
@@ -51,26 +51,33 @@ Triggers to do update of de-normalized data (BDate, DDate, Reverse (place), Name
 
 
 ### Note			TEXT
-or, also named:  Comments, ActualText, Results
+
+also named:  Comments, ActualText, Results
+
 Multi line text. Both Windows and MacOS databases use CR LF for end of line. Both use UTF-8 encoding. The RM GUI 
 uses a special Note Editor for these fields.
 
 ### Sentence		TEXT
-or, also named:  Sentence1, Sentence2, Footnote, ShortFootnote, Bibliography
+
+also named:  Sentence1, Sentence2, Footnote, ShortFootnote, Bibliography
+
 Generally takes one line of text in the form of a template using the RM sentence template language, 
 but there is no prohibition against multiple lines. 
+The RM GUI does not use the note editor for sentence template editing.
 Both Windows and MacOS databases use CR LF for end of line. Both use UTF-8 encoding. 
 
 
 ### Date		TEXT
-See other document
+
+(RM Date format)[https://github.com/ricko2001/Genealogy-scripts/blob/main/RM%20-Dates%20and%20Sort%20Dates/RM%20Dates.txt]
 
 ### SortDate	BIGINT
-See other document
 
+(Sort Date investigations)[https://github.com/ricko2001/Genealogy-scripts/blob/main/RM%20-Dates%20and%20Sort%20Dates/RM%20Sort%20dates.txt]
 
 ### Latitude     INTEGER
 ### Longitude    INTEGER
+
 values stored as a signed integer with a scale factor
 for example- Oakland, CA
 stored value   scale    actual
@@ -79,50 +86,47 @@ stored value   scale    actual
 W and S are negative
 
 ### UTCModDate	FLOAT
+
 Modified Julian date
 see: <https://en.wikipedia.org/wiki/Julian_day>
 
 using SQLite-
-to generate current UTCModDate
+``` SQL
+-- to generate current UTCModDate
 SELECT julianday('now') - 2415018.5 AS UTCModDate
 
-to convert UTCModDate to standard format date/time
+-- to convert UTCModDate to standard format date/time
 SELECT UTCModDate,
 DATE(UTCModDate + 2415018.5) AS Date,
 TIME(UTCModDate + 2415018.5) AS Time,
 DATETIME(UTCModDate + 2415018.5) AS DateTime
 FROM EventTable
-
+```
 
 ## Lookup tables
 
 ### OwnerID
 is a Polymorphic Foreign Key Type, OwnerType tells where it points.
 
-| OwnerType | Links to         | Table.row                             |
-| --------- | ---------------- | ------------------------------------ |
-| 0         | person           | PersonTable.PersonID                  |
-| 1         | family/couple    | FamilyTable.FamilyID                  |
-| 2         | fact/event       | EventTable.EventID                    |
-| 3         | source           | SourceTable.SourceID                  |
-| 4         | citation         | CitationTable.CitationID              |
-| 5         | place            | PlaceTable.PlaceID                    |
-| 6         | task             | TaskTable.TaskID                      |
-| 7         | name             | NameTable.NameID                      |
-| 8         | 0    TODO        | [nothing]  _SPECIAL-CASE              |
-| 14        | place detail     | PlaceTable.PlaceID                    |
-| 15        | _NOT-IMP RM v>7  |                                       |
-| 18        | Task Folder      |                                       |
-| 19        | association      | FANTable.FanID                        |
-| 20        |    TODO          | TagTable.TagValue, GroupTable.GroupID |
+| OwnerType | Links to        | Table.row                             |
+| --------- | --------------- | ------------------------------------- |
+| 0         | person          | PersonTable.PersonID                  |
+| 1         | family/couple   | FamilyTable.FamilyID                  |
+| 2         | fact/event      | EventTable.EventID                    |
+| 3         | source          | SourceTable.SourceID                  |
+| 4         | citation        | CitationTable.CitationID              |
+| 5         | place           | PlaceTable.PlaceID                    |
+| 6         | task            | TaskTable.TaskID                      |
+| 7         | name            | NameTable.NameID                      |
+| 8         | 0    TODO       | [nothing]  _SPECIAL-CASE              |
+| 14        | place detail    | PlaceTable.PlaceID                    |
+| 15        | _NOT-IMP RM v>7 |                                       |
+| 18        | Task Folder     |                                       |
+| 19        | association     | FANTable.FanID                        |
+| 20        | TODO            | TagTable.TagValue, GroupTable.GroupID |
 
 5 & 14 both point to PlaceTable.PlaceID \
 PlaceTable.PlaceType distinguishes the 3 types of places.
-
-| Table   | RecType                        | OwnerType | OwnerID                               |
-| ------- | ------------------------------ | --------- | ------------------------------------- |
-| Payload | 1        (SavedCriteriaSearch) | 8         | 0                                     |
-| Payload | 2        (SavedCriteriaGroup)  | 20        | TagTable.TagValue, GroupTable.GroupID |
 
 ### Proof
 
@@ -157,6 +161,10 @@ Should RM tables be declared STRICT ?  What would happen? Are there speed or sto
 https://stackoverflow.com/questions/7337882/what-is-the-difference-between-sqlite-integer-data-types-like-int-integer-bigi
 BIGINT is just a synonym for INTEGER. It cannot be used in all statements.
 It is in no way bigger than INTEGER, it doesn't reserve more space.
+
+https://hashrocket.com/blog/posts/modeling-polymorphic-associations-in-a-relational-database
+Modeling Polymorphic Associations in a Relational Database
+
 
 ## Table DDL
 
