@@ -69,11 +69,13 @@ Both Windows and MacOS databases use CR LF for end of line. Both use UTF-8 encod
 
 ### Date		TEXT
 
-(RM Date format)[https://github.com/ricko2001/Genealogy-scripts/blob/main/RM%20-Dates%20and%20Sort%20Dates/RM%20Dates.txt]
+see:
+[RM Date format](https://github.com/ricko2001/RootsMagic_Database_Design/blob/main/RM%20Dates.txt)
 
 ### SortDate	BIGINT
 
-(Sort Date investigations)[https://github.com/ricko2001/Genealogy-scripts/blob/main/RM%20-Dates%20and%20Sort%20Dates/RM%20Sort%20dates.txt]
+see:
+[Sort Date investigations](https://github.com/ricko2001/RootsMagic_Database_Design/blob/main/RM%20Sort%20dates.txt)
 
 ### Latitude     INTEGER
 ### Longitude    INTEGER
@@ -90,8 +92,9 @@ W and S are negative
 Modified Julian date  
 Modified means there is an offset subtracted from the standard Julian Date number.
 Usually, this offset is: 2400000.5 but RM uses Microsoft's offset: 2415018.5
-see:  UTCModDate.txt
-<https://en.wikipedia.org/wiki/Julian_day>
+see:
+[UTCModDate.txt](https://github.com/ricko2001/RootsMagic_Database_Design/blob/main/UTCModDate.txt)\
+<https://en.wikipedia.org/wiki/Julian_day>\
 <https://answers.microsoft.com/en-us/msoffice/forum/all/julian-date/7d23f252-272a-4e52-802e-ec3f3e616845>
 
 
