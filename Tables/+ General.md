@@ -87,21 +87,13 @@ W and S are negative
 
 ### UTCModDate	FLOAT
 
-Modified Julian date
-see: <https://en.wikipedia.org/wiki/Julian_day>
+Modified Julian date  
+Modified means there is an offset subtracted from the standard Julian Date number.
+Usually, this offset is: 2400000.5 but RM uses Microsoft's offset: 2415018.5
+see:  UTCModDate.txt
+<https://en.wikipedia.org/wiki/Julian_day>
+<https://answers.microsoft.com/en-us/msoffice/forum/all/julian-date/7d23f252-272a-4e52-802e-ec3f3e616845>
 
-using SQLite-
-``` SQL
--- to generate current UTCModDate
-SELECT julianday('now') - 2415018.5 AS UTCModDate
-
--- to convert UTCModDate to standard format date/time
-SELECT UTCModDate,
-DATE(UTCModDate + 2415018.5) AS Date,
-TIME(UTCModDate + 2415018.5) AS Time,
-DATETIME(UTCModDate + 2415018.5) AS DateTime
-FROM EventTable
-```
 
 ## Lookup tables
 
