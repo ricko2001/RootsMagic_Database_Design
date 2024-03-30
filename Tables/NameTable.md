@@ -92,7 +92,6 @@ Here are several examples-
 | -------------- | -------------- |
 | Öhring         | Ohring         |
 | Rüb            | Rub            |
-| \[wife of Rüb] | \[wife of Rub] |
 
 The Japanese names in my database aren't changed, so ASCIIized is not at 
 all a correct description of the transformation. It could also involve using the normalized version of names containing Unicode combining characters.
@@ -105,7 +104,7 @@ The new columns are not declared with a collation, so the indexes that exist wer
 
 | NameType | Type           |
 | -------- | -------------- |
-| 0        | <unspecified>  |
+| 0        | ►unspecified◄  |
 | 1        | AKA            |
 | 2        | Birth          |
 | 3        | Immigrant      |
@@ -114,10 +113,17 @@ The new columns are not declared with a collation, so the indexes that exist wer
 | 6        | Nickname       |
 | 7        | Other Spelling |
 
-
 ## Open Questions
-De-normalized Birth and death dates should go in the PersonTable.
+
+De-normalized Birth and death dates should go in the PersonTable?
 A person can have multiple names, can each name have a dif B & D date in the index?
+
+It should depend on where the denormalized dates are used. If they are only shown i the name 
+index, then every idex entry has a name and a pair of dates. They go together. It also
+means that if the NameTable b+d date data gets out of sync, then every name of the same 
+person may have different dates.
+
+
 
 ### DONE 1
 

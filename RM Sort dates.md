@@ -1,12 +1,11 @@
 
-===========================================DIV50==
-===========================================DIV50==
-SORT DATE
-===========================================DIV50==
-===========================================DIV50==
+# SORT DATE
 
+Still in the discovery phase
+
+```
 Standard/Recognized Dates							Date
-	Complete and Partial Dates						
+	Complete and Partial Dates
 			1 Jan 1900						D.+19000101..+00000000..
 			1 Jan 1900 BC					D.-19000101..+00000000..
 			Jan 1900						D.+19000100..+00000000..
@@ -15,14 +14,16 @@ Standard/Recognized Dates							Date
 			Jan								D.+00000100..+00000000..
 			1 ??? 1900						D.+19000001..+00000000..
 
-		Double Dates					
+		Double Dates
 			1 Jan 1583/84					D.+15830101/.+00000000..
 
-		Quaker Dates					
+		Quaker Dates
 			12da 5mo 1588					Q.+15880512..+00000000..
 
-	Date Modifiers and Date Qualifiers						
-		Single Date Directional Modifiers					
+		Quarter Dates
+
+	Date Modifiers and Date Qualifiers
+		Single Date Directional Modifiers
 			Bef 1 Jan 1900					DB+19000101..+00000000..
 			By 1 Jan 1900					DY+19000101..+00000000..
 			To 1 Jan 1900					DT+19000101..+00000000..
@@ -31,20 +32,20 @@ Standard/Recognized Dates							Date
 			Since 1 Jan 1900				DI+19000101..+00000000..
 			Aft 1 Jan 1900					DA+19000101..+00000000..
 
-		Date-Range Directional Modifiers					
+		Date-Range Directional Modifiers
 			Bet 1 Jan 1900 and 5 Jan 1900		DR+19000101..+19000105..
 			From 1 Jan 1900 to 5 Jan 1900		DS+19000101..+19000105..
 			1 Jan 1900–5 Jan 1900				D-+19000101..+19000105..
 			1 Jan 1900 or 5 Jan 1900			DO+19000101..+19000105..
 
-		Date Qualifiers					
+		Date Qualifiers
 			Abt 1 Jan 1900					D.+19000101.A+00000000..
 			Est 1 Jan 1900					D.+19000101.E+00000000..
 			Calc 1 Jan 1900					D.+19000101.L+00000000..
 			Ca 1 Jan 1900					D.+19000101.C+00000000..
 			Say 1 Jan 1900					D.+19000101.S+00000000..
 
-		Qualitative Modifiers					
+		Qualitative Modifiers
 			Cert 1 Jan 1900					D.+19000101.6+00000000..
 			Prob 1 Jan 1900					D.+19000101.5+00000000..
 			Poss 1 Jan 1900					D.+19000101.4+00000000..
@@ -52,16 +53,16 @@ Standard/Recognized Dates							Date
 			Appar 1 Jan 1900				D.+19000101.2+00000000..
 			Prhps 1 Jan 1900				D.+19000101.1+00000000..
 			Maybe 1 Jan 1900				D.+19000101.?+00000000..
-							
-NULL Dates			NULL					.
-							
-Text Dates			the first Wednesday		Tthe first Wednesday 
 
+Empty Dates			empty					.
+
+Text Dates			the first Wednesday		TFirst Wednesday
+```
 =========================================================================
 =========================================================================
 
-from-
-https://sqlitetoolsforrootsmagic.com/dates-sortdate-algorithm/
+from-\
+https://sqlitetoolsforrootsmagic.com/dates-sortdate-algorithm/\
 accessed: 2021-04-17
 
 
@@ -80,7 +81,9 @@ bits	value
 49-64	year for the first date + 10000
 If the date is missing, the value 0xffffffff (2^65-1) is stored. This makes an event with no date, the last date in the list as far as the sort order is concerned.
 
-The flag fields tell what kind of modifiers the date has. Certainty modifiers are not included in SortDates since they don’t affect the sort order. Here are the possible flag values:
+The flag fields tell what kind of modifiers the date has.
+Certainty modifiers are not included in SortDates since they don’t affect the sort order.
+Here are the possible flag values:
 
 flag value	meaning
 0	before
@@ -95,10 +98,19 @@ flag value	meaning
 27	from
 30	since
 31	after
-Note that the value of these flags determines the sort order for dates as listed above. Since dates that don’t have ranges store their year as 0x3fff, they will always come after dates with ranges that have a year less than this.
+Note that the value of these flags determines the sort order for dates as listed above.
+Since dates that don’t have ranges store their year as 0x3fff, they will always come after dates with ranges that have a year less than this.
 
 Algorithms
-For almost all compilers, shift and bit-wise mask operators are faster than the division and remainder operations outlines above. If your system supports it, I recommend the following algorithms to extract the dates and flag from sort dates. In these formulas i>>j is the operation of shifting the number i j bits to the right. The operation i<<j shifts the number i j bits to the left. The operation i&j performs a bitwise and of the two numbers. This is the notation used in C, C++, C#, and python. I’m not sure about other languages. Let Ds be the sort date, as above, Y1 be the year of the first date, M1 be the month of the first date, D1 be the day of the first date, Y2 be the year of the second date, M2 be the month of the second date, D2 by the day of the second date, and F by the flag.
+For almost all compilers, shift and bit-wise mask operators are faster than the division and remainder operations outlines above.
+If your system supports it, I recommend the following algorithms to extract the dates and flag from sort dates.
+In these formulas i>>j is the operation of shifting the number i j bits to the right.
+The operation i<<j shifts the number i j bits to the left.
+The operation i&j performs a bitwise and of the two numbers.
+This is the notation used in C, C++, C#, and python.
+I’m not sure about other languages. Let Ds be the sort date, as above, Y1 be the year of the first date,
+M1 be the month of the first date, D1 be the day of the first date, Y2 be the year of the second date,
+ M2 be the month of the second date, D2 by the day of the second date, and F by the flag.
 
 Ds = ((Y1 + 10000)<<49) & (M1<<45) & (D1<<39) & (Y2<<20) & (M2<<16) & (D2<<10) & F ??
 ‍Ds = If no Date then
@@ -118,7 +130,8 @@ F = Ds & 0x3ff
 Downloads
 SortDateDecodeDev.sql an example decoder using Steve’s algorithm
 SortDateEncoderDev2.sql an encoding example using the modified version of Steve’s algorithm; streamlined, faster and more readable code than SortDateEncoderDev.sql.
-SortDates (2013-01-01).rmgbRM6 database with samples of most date formats for testing with above.
+SortDates (2013-01-01).rmgb
+RM6 database with samples of most date formats for testing with above.
 
 =========================================================================
 =========================================================================
@@ -128,7 +141,7 @@ SortDateEncoderDev2.sql an encoding example using the modified version of Steve�
 
 -- SortDateEncoderDev2.sql
 
-
+```
 /*
 2013-01-02 Tom Holden ve3meo
 
@@ -139,7 +152,7 @@ See http://sqlitetoolsforrootsmagic.wikispaces.com/Dates%3E+SortDate+Algorithm#A
 
 Encode SortDate for regular non-Quaker dates
 Ds = If no Date then 9223372036854775807
-     else ((Y1 + 10000)<<49) + (M1<<45) + (D1<<39) + 
+     else ((Y1 + 10000)<<49) + (M1<<45) + (D1<<39) +
      (If Date2 then (Y2 + 10000)<<20 else 17178820608) + (M2<<16) + (D2<<10) + F
 where Ds = SortDate, Y = Year, M = Month, D = Day, F = modifier flag.
 
@@ -150,11 +163,11 @@ Also handles Quaker dates and slash dates, separately and in combination, at lea
 SELECT EventID, Date, Details, SortDate, CalcDate, SortDate-CalcDate AS Error
 FROM
 (
-SELECT EventID, DATE, Details, SortDate, 
+SELECT EventID, DATE, Details, SortDate,
   CASE Typ
 		WHEN 'D'
 			THEN --non-Quaker date
-				CASE 
+				CASE
 					WHEN Y1 = 0
 						AND M1 + D1 != 0
 						THEN 16383 << 49 -- a date with no year
@@ -164,46 +177,46 @@ SELECT EventID, DATE, Details, SortDate,
 				(D1 << 39) + --D1
 				CASE Y2
 					WHEN 0
-						THEN 17178820608 -- x'03 FF F0 00 00' or (2^34 - 2^20)  SELECT (1<<34)-(1<<20) 
+						THEN 17178820608 -- x'03 FF F0 00 00' or (2^34 - 2^20)  SELECT (1<<34)-(1<<20)
 					ELSE ((Y2 + 10000) << 20) --Y2
-					END + (M2 << 16) + --M2  
+					END + (M2 << 16) + --M2
 				(D2 << 10) + --D2
 				Flag -- Flag
 		WHEN 'Q'
 			THEN --Quaker date
-				CASE 
+				CASE
 					WHEN M1 > 10
 						AND Y1 < 1752 -- month 1=Mar, 12=Feb of next year, before 1752
 						THEN (Y1 + 10001 + (Slsh = '/')) << 49
 					ELSE (Y1 + 10000 + (Slsh = '/')) << 49
 					END + -- Y1
-				CASE 
+				CASE
 					WHEN Y1 < 1752
-						THEN CASE 
+						THEN CASE
 								WHEN M1 = 0
 									THEN 0
 								WHEN M1 < 11
-									THEN (M1 + 2) << 45 
+									THEN (M1 + 2) << 45
 								WHEN M1 > 10
 									THEN (M1 - 10) << 45  -- SELECT Date,SUBSTR(Date,8,2)-10 FROM EventTable WHERE ABS(SUBSTR(Date,8,2))>10
 								END
 					ELSE (M1 << 45)
-					END + --M1 
+					END + --M1
 				(D1 << 39) + --D1
 				CASE Y2
 					WHEN 0
-						THEN 17178820608 -- x'03 FF F0 00 00' or (2^34 - 2^20)  SELECT (1<<34)-(1<<20) 
-					ELSE CASE 
+						THEN 17178820608 -- x'03 FF F0 00 00' or (2^34 - 2^20)  SELECT (1<<34)-(1<<20)
+					ELSE CASE
 							WHEN M2 > 10
 								AND Y2 < 1752
 								THEN (Y2 + 10001) << 20
 							ELSE (Y2 + 10000) << 20
 							END
 					END + --Y2
-				CASE 
+				CASE
 					WHEN Y2 < 1752
 						THEN --
-							CASE 
+							CASE
 								WHEN M2 = 0
 									THEN 0
 								WHEN M2 < 11
@@ -219,20 +232,20 @@ SELECT EventID, DATE, Details, SortDate,
 		ELSE 9223372036854775807 --x'7F FF FF FF FF FF FF FF' (2^63-1)
 		END AS CalcDate
 FROM (
-	SELECT 
-    EventID, 
-    DATE, 
-    SortDate, 
-    Details, 
-    SUBSTR(DATE, 1, 1) AS Typ, 
-    CAST(SUBSTR(DATE, 3, 5) AS INT) AS Y1, 
-    CAST(SUBSTR(DATE, 8, 2) AS INT) AS M1, 
-    CAST(SUBSTR(DATE, 10, 2) AS INT) AS D1, 
-    SUBSTR(DATE, 12, 1) AS Slsh, 
-    CAST(SUBSTR(DATE, 14, 5) AS INT) AS Y2, 
-    CAST(SUBSTR(DATE, 19, 2) AS INT) AS M2, 
-    CAST(SUBSTR(DATE, 21, 2) AS INT) AS D2, 
-    
+	SELECT
+    EventID,
+    DATE,
+    SortDate,
+    Details,
+    SUBSTR(DATE, 1, 1) AS Typ,
+    CAST(SUBSTR(DATE, 3, 5) AS INT) AS Y1,
+    CAST(SUBSTR(DATE, 8, 2) AS INT) AS M1,
+    CAST(SUBSTR(DATE, 10, 2) AS INT) AS D1,
+    SUBSTR(DATE, 12, 1) AS Slsh,
+    CAST(SUBSTR(DATE, 14, 5) AS INT) AS Y2,
+    CAST(SUBSTR(DATE, 19, 2) AS INT) AS M2,
+    CAST(SUBSTR(DATE, 21, 2) AS INT) AS D2,
+
 				CASE SUBSTR(DATE, 2, 1) -- Flag
 					WHEN 'B'
 						THEN 0 --Before
@@ -264,6 +277,8 @@ FROM (
 	)
 )
 ;
+```
+
 =========================================================================
 =========================================================================
 sample database (original)
@@ -339,7 +354,7 @@ blank date	blank				no
 text date	blank				no
 
 seems like stuct flag- pos 2 "-" is always used with double date and the
-date -n  format usually used for sort dates, also uses the same struct flag. 
+date -n  format usually used for sort dates, also uses the same struct flag.
 the N is considered a year number in the second date.
 
 the sort date is calculated the same for all 2 date formats, even the -N style.
@@ -347,7 +362,7 @@ the sort date is calculated the same for all 2 date formats, even the -N style.
 
 same means sort date displayed same as date.
 
-Add some more 
+Add some more
 
 select EventType, Details, Date, SortDate from EventTable order by SortDate
 
@@ -459,16 +474,16 @@ displayed SD		actual SD
 13 Jan 1921			6,710,968,743,111,950,348
 
 displayed SD		actual SD								-K
-13 Jan 1921-1		6,710,968,7  36,419,938,325		
-13 Jan 1921-2		6,710,968,7  36,420,986,901		
-13 Jan 1921-10		6,710,968,7  36,429,375,509		
-13 Jan 1921			6,710,968,7  43,111,950,348		36,420,986,901	
+13 Jan 1921-1		6,710,968,7  36,419,938,325
+13 Jan 1921-2		6,710,968,7  36,420,986,901
+13 Jan 1921-10		6,710,968,7  36,429,375,509
+13 Jan 1921			6,710,968,7  43,111,950,348		36,420,986,901
 
 
-plain - plain_1   = 43,111,950,348 - 36,419,938,325 =  6,692,012,023 
+plain - plain_1   = 43,111,950,348 - 36,419,938,325 =  6,692,012,023
 
 
-K = 6,692,012,023 
+K = 6,692,012,023
 2^20 = 1,048,576
 
 plain_N  = plain -K + (N-1) * 2^20
@@ -520,9 +535,9 @@ displayed SD					actual SD
 1921 ( sort date=1921-10 )		6,710,926, 405,231,706,133
 1921							6,710,926, 411,914,280,972
 
-plain_N  = plain -K + N * 2^20 
+plain_N  = plain -K + N * 2^20
 
-plain_N -plain -2^20 = -K 
+plain_N -plain -2^20 = -K
 N=1
 K= plain - plain_1 + 2*20
 

@@ -70,12 +70,12 @@ Both Windows and MacOS databases use CR LF for end of line. Both use UTF-8 encod
 ### Date		TEXT
 
 see:
-[RM Date format](https://github.com/ricko2001/RootsMagic_Database_Design/blob/main/RM%20Dates.txt)
+[RM Date format](https://github.com/ricko2001/RootsMagic_Database_Design/blob/main/RM%20Dates.md)
 
-### SortDate	BIGINT
+### SortDate	BIGINT (= INTEGER)
 
 see:
-[Sort Date investigations](https://github.com/ricko2001/RootsMagic_Database_Design/blob/main/RM%20Sort%20dates.txt)
+[Sort Date investigations](https://github.com/ricko2001/RootsMagic_Database_Design/blob/main/RM%20Sort%20dates.md)
 
 ### Latitude     INTEGER
 ### Longitude    INTEGER
@@ -113,7 +113,7 @@ is a Polymorphic Foreign Key Type, OwnerType tells where it points.
 | 5         | place           | PlaceTable.PlaceID                    |
 | 6         | task            | TaskTable.TaskID                      |
 | 7         | name            | NameTable.NameID                      |
-| 8         | 0    TODO       | [nothing]  _SPECIAL-CASE              |
+| 8         | 0    TODO       | ►nothing◄  _SPECIAL-CASE              |
 | 14        | place detail    | PlaceTable.PlaceID                    |
 | 15        | _NOT-IMP RM v>7 |                                       |
 | 18        | Task Folder     |                                       |
@@ -127,7 +127,7 @@ PlaceTable.PlaceType distinguishes the 3 types of places.
 
 | Proof | level     |
 | ----- | --------- |
-| 0     | [blank]   |
+| 0     | ►blank◄   |
 | 1     | Proven    |
 | 2     | Disproven |
 | 3     | Disputed  |
@@ -401,3 +401,7 @@ https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-own
 | 18               | Task Folder (update of Research Log)              |             |               |                      |               | Y            |                 |                  |              |               |               |
 |                  |                                                   |             |               |                      |               |              |                 |                  |              |               |               |
 
+## Boilerplate
+reused text
+
+►◄
