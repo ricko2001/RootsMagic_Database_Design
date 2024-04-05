@@ -34,7 +34,8 @@ CREATE TABLE AddressLinkTable (LinkID INTEGER PRIMARY KEY, OwnerType INTEGER, Ad
 | 6   | Details    | _NOT-IMPL                       |
 | 7   | UTCModDate | _STD                           |
 
-OwnerType is either 0, 1 or 3.
+OwnerType is either 0, 1,3 or 6
+
 In person edit window, can attach an address to the person, his spouse (family) and parents (family)
 
 Address of AddressType 0 links to people 0 or 1 family, address/repository of type 1 links to sources.

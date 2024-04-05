@@ -40,8 +40,24 @@ CREATE INDEX idxCitationLinkOwnerID ON CitationLinkTable (OwnerID);
 | 8   | Flags      | _NOT-IMP (all 0)                                         |
 | 9   | UTCModDate | _STD                                                     |
 
+OwnerType values seen in DB: 
+
+| OwnerType | Links to       |
+| --------- | -------------- |
+| 0         | a person       |
+| 1         | a family       |
+| 2         | a fact/event   |
+| 6         | a task         |
+| 7         | a name         |
+| 19        | an association |
+
+A citation must have only Source, but via the CitationLinkTable, may be pointed to by many objects of many types. See below- Polymorphic Foreign Key type.
+
+Link to association is new and different. It gives evidence for a relationship.
+
+
 SortOrder does not appear in the RM GUI, but the column values is indeed used in v9.1.3 for sorting citations in lists,
-but not in reports when the citation is converted to a footnote, and not inthe "slide-in workflow" citation listing.
+but not in reports when the citation is converted to a footnote, and not in the "slide-in workflow" citation listing.
 Utility app and SQL statement exist to exploit this field even in v9.1.3.
 
 In RM GUI
@@ -49,24 +65,7 @@ Quality is shown in three separate fields in the Citation display:
 Source, Information, and Evidence. See below for values.
 
 
-A citation must have only Source, but via the CitationLinkTable, may be pointed to by many obejects of many types. See below- Polymorphic Foreign Key type.
-
-Link to association is new and different. It gives evidence for a relationship.
-
-
 ## Lookup Tables
-
-Polymorphic Foreign Key type
-
-| OwnerType | Links to       | Table.row            |
-| --------- | -------------- | -------------------- |
-| 0         | a person       | PersonTable.PersonID |
-| 1         | a family       | FamilyTable.FamilyID |
-| 2         | a fact/event   | EventTable.EventID   |
-| 6         | a task         | TaskTable.TaskID     |
-| 7         | a name         | NameTable.NameID     |
-| 19        | an association | FANTable.FanID       |
-
 
 Quality has three positions 
 
@@ -98,3 +97,4 @@ Quality has three positions
 
 ## Open Questions
 
+## DONE 1

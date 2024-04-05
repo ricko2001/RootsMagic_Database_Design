@@ -39,7 +39,7 @@ CREATE INDEX idxSourceTemplateName ON SourceTemplateTable (Name);
 | 6   | Footnote      | _TEXT-SL        |
 | 7   | ShortFootnote | _TEXT-SL        |
 | 8   | Bibliography  | _TEXT-SL        |
-| 9   | FieldDefs     | XML             |
+| 9   | FieldDefs     | _STD XML        |
 | 10  | UTCModDate    | _STD            |
 
 No prohibition against duplicate Names.\

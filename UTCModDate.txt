@@ -28,5 +28,10 @@ DATE(UTCModDate + 2415018.5) AS Date,
 TIME(UTCModDate + 2415018.5) AS Time,
 DATETIME(UTCModDate + 2415018.5) AS DateTime
 FROM EventTable
+
+To save UTCModDate to current time in RM database
+UPDATE EventTable
+  SET UTCModDate = julianday('now') - 2415018.5
+  
 ```
 

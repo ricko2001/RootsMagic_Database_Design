@@ -82,7 +82,7 @@ ChildTable is a link table between FamilyTable and itself (ft)
 
 How to link parents and offspring
 I the person was linked directly to his parents (the family object) then
-there would not be an opportunity to allow mulitple sets of parents - Birth, adopted, alternate possiblie Birth parents, etc.
+there would not be an opportunity to allow multiple sets of parents - Birth, adopted, alternate possible Birth parents, etc.
 
 
 Actual method allows multiple families for a person. 

@@ -16,6 +16,8 @@ https://sqlitetoolsforrootsmagic.com/rm9-data-definitions/
 
 https://sqlitetoolsforrootsmagic.com/dbeaver-heredis-2023-and-rootsmagic-9/
 
+https://sqlitetoolsforrootsmagic.com/dates-sortdate-algorithm/
+
 ## R. Steven Turley
 
 https://sqlitetoolsforrootsmagic.com/dates-sortdate-algorithm/

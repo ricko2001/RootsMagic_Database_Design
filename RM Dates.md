@@ -47,6 +47,18 @@ An example transition-
 
 In historical sources created when dates were in transition, Julian data was sometimes/often  followed with O.S. and Gregorian dates followed by N.S.( old and new style)
 
+
+```
+                                 GREGORIAN
+  2   2   2   2   2   2   2   2   2   2   2   2   3   3   3   3   3   3   3   3   3   3   3   3
+  1   2   3   4   5   6   7   8   9  10  11  12   1   2   3   4   5   6   7   8   9  10  11  12 
+Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+ 11  12   1   2   3   4   5   6   7   8   9  10  11  12   1   2   3   4   5   6   7   8   9  10   
+  1   1   2   2   2   2   2   2   2   2   2   2   2   2   3   3   3   3   3   3   3   3   3   3
+                                  JULIIAN
+  X   X                                           X   X  
+```
+
 ## Quarter dates
 
 enter- Q1 2014\
@@ -89,6 +101,36 @@ There is no accounting for the 10 days "eliminated"
 
 Most RM database format dates are 24 bytes long, except '.' type dates which are one character and 'T' dates which can be any length.
 
+```
+schematic of an RM Date
+origin 0 based indexing
+
+0123456789A123456789B123
+TS+YYYYMMDDJC+YYYYMMDDJC
+```
+
+Python style string slicing
+
+|        | char  | range  | mea              |
+| ------ | :---- | :----- | :--------------- |
+| Part 0 | ===== | ====== | ======           |
+|        | T     | 0:1    | Type             |
+|        | S     | 1:2    | Structure        |
+| Part 1 | ===== | ====== | =======          |
+|        | +     | 2:3    | BC/AD -/+        |
+|        | YYY   | 3:7    |                  |
+|        | MM    | 7:9    |                  |
+|        | DD    | 9:11   |                  |
+|        | J     | 11:12  | Julian/Gregorian |
+|        | C     | 12:13  | certainty        |
+| Part 2 | ===== | ====== | =======          |
+|        | +     | 13:14  | BC/AD -/+        |
+|        | YYY   | 14:18  |                  |
+|        | MM    | 18:20  |                  |
+|        | DD    | 20:22  |                  |
+|        | J     | 22:23  | Julian/Gregorian |
+|        | C     | 23:24  | certainty        |
+
 from 
 <https://docs.google.com/spreadsheets/d/1yOb8klovt6UXStcD_S2g7wkkKh4S12AZJ9zSo1Dz_-g/edit#gid=2014317360>\
 accessed: 2021-04-17\
@@ -99,6 +141,7 @@ The position 1 character describes the entire date.
 other modifiers affect ony the first or second date.
 Even JG double date flag (positions 12 & 23) affects its own part of the date
 
+This section uses origin 1 indexing
 
 | Position 1 | function      |
 | :--------: | ------------- |
@@ -111,20 +154,20 @@ Even JG double date flag (positions 12 & 23) affects its own part of the date
 
 D, Q, and R dates may be One Part or Two Part Dates.
 
-| Position 2 | meaning     | allowed date parts |
-| :--------: | :---------- | :----------------: |
-|     .      | otherwise   |       1 part       |
-|     A      | After       |       1 part       |
-|     B      | Bef         |       1 part       |
-|     F      | From        |       1 part       |
-|     I      | Since       |       1 part       |
-|     T      | To          |       1 part       |
-|     U      | Until       |       1 part       |
-|     Y      | By          |       1 part       |
-|     O      | Or          |       2 part       |
-|     R      | Bet/And     |       2 part       |
-|     S      | From/To     |       2 part       |
-|     -      | – (em dash) |       2 part       |
+| Position 2 | meaning     | number of date parts |
+| :--------: | :---------- | :------------------: |
+|     B      | Bef         |        1 part        |
+|     Y      | By          |        1 part        |
+|     T      | To          |        1 part        |
+|     U      | Until       |        1 part        |
+|     .      | On          |        1 part        |
+|     R      | Bet/And     |        2 part        |
+|     S      | From/To     |        2 part        |
+|     -      | – (em dash) |        2 part        |
+|     O      | Or          |        2 part        |
+|     F      | From        |        1 part        |
+|     I      | Since       |        1 part        |
+|     A      | After       |        1 part        |
 
 ### Part One date
 

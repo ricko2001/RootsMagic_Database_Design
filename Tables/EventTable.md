@@ -54,14 +54,12 @@ CREATE INDEX idxOwnerDate ON EventTable (OwnerID,SortDate);
 | 11  | IsPrivate  | _STD                             |
 | 12  | Proof      | _STD                             |
 | 13  | Status     | _NOT-IMP (all 0)                 |
-| 14  | Sentence   | _STD                         |
+| 14  | Sentence   | _STD                             |
 | 15  | Details    | _TEXT-SL                         |
 | 16  | Note       | _STD                             |
 | 17  | UTCModDate | _STD                             |
 
-OwnerType
-Types seen in database-
-0 Person, 1 Family/couple.
+OwnerType seen in database- 0 Person, 1 Family/couple.
 
 FamilyID        not used in current design
 
@@ -72,7 +70,7 @@ SiteID ,  0 if no detail specified\
 
 OwnerEventType  This is redundant with the EventType which also says what kind of event it is.
 
-Sentence    if not null, use this as sentence for fact
+Sentence    if not null, use this custom template for fact
 
 
 ## Lookup Tables

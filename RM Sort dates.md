@@ -63,10 +63,10 @@ Text Dates			the first Wednesday		TFirst Wednesday
 
 from-\
 https://sqlitetoolsforrootsmagic.com/dates-sortdate-algorithm/\
-accessed: 2021-04-17
+accessed: 2021-04-17\
+minor edits for clarity by RJO
 
-
-
+```
 Advanced Date Algorithms by R. Steven Turley
 Here are the algorithms for decoding RM5 dates. These may be the same as RM4, but I haven’t tested them (ve3meo Dec 31, 2012 tested in RM6 and okay). They work for all normal dates, but I haven’t tested them on old dates or Quaker dates. I’m hoping those will just translate to their Julian equivalents and work okay. I’ll report those tests later. These dates are best understood in terms of bit fields on a long (64 bit) integer. Bit 0 is the least significant bit.
 
@@ -74,11 +74,12 @@ bits	value
 0-9	flag indicating date modifiers (see table below)
 10-15	day for the second date; 0 if no second date
 16-19	month for the second date (1=Jan, 2=Feb, etc), 0 if no second date
-20-33	year for the second date+10000; 0x3fff if no second date
+20-33	year for the second date+10,000; 0x3fff if no second date
 34-38	these were always zero in my tests, must be reserved for something else
 39-44	day for the first date; 0 if no day is supplied
 45-48	month for the first date; 0 if no month is supplied
-49-64	year for the first date + 10000
+49-64	year for the first date + 10,000
+
 If the date is missing, the value 0xffffffff (2^65-1) is stored. This makes an event with no date, the last date in the list as far as the sort order is concerned.
 
 The flag fields tell what kind of modifiers the date has.
@@ -127,6 +128,7 @@ M2 = (Ds>>16) & 0xf
 D2 = (Ds>>10) & 0x3f
 F = Ds & 0x3ff
 
+```
 Downloads
 SortDateDecodeDev.sql an example decoder using Steve’s algorithm
 SortDateEncoderDev2.sql an encoding example using the modified version of Steve’s algorithm; streamlined, faster and more readable code than SortDateEncoderDev.sql.
@@ -139,9 +141,9 @@ from same as above-
 
 SortDateEncoderDev2.sql an encoding example using the modified version of Steve’s algorithm; streamlined, faster and more readable code than SortDateEncoderDev.sql.
 
+```
 -- SortDateEncoderDev2.sql
 
-```
 /*
 2013-01-02 Tom Holden ve3meo
 
@@ -281,6 +283,9 @@ FROM (
 
 =========================================================================
 =========================================================================
+
+copy data from db using sql
+
 sample database (original)
 select Details, Date, SortDate from EventTable order by SortDate
 

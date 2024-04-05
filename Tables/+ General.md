@@ -98,6 +98,15 @@ see:
 <https://answers.microsoft.com/en-us/msoffice/forum/all/julian-date/7d23f252-272a-4e52-802e-ec3f3e616845>
 
 
+### XML  BLOB
+
+named:  Fields, FieldDefs
+
+This is a SQLite BLOB field, probably for historical reasons. All new data in these fields is
+standard UTF-8 text.
+
+
+
 ## Lookup tables
 
 ### OwnerID
@@ -385,21 +394,36 @@ Pat Jones:\
 https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-ownership/
 
 
-| Owner Type Value | Owner Type                                        | Can Own URL | Can Own Place | Can Own Place Detail | Can Own Media | Can Own Task | Can Own Address | Can Own Citation | Can Own Name | Can Own Child | Can Own Event |
-| :--------------- | :------------------------------------------------ | :---------- | :------------ | :------------------- | :------------ | :----------- | :-------------- | :--------------- | :----------- | :------------ | :------------ |
-| 0                | Person                                            | Y           |               |                      | Y             | Y            | Y               | Y                | Y            |               | Y             |
-| 1                | Family                                            |             |               |                      | Y             | Y            | Y               | Y                |              | Y             | Y             |
-| 2                | Event                                             |             | Y             | Y                    | Y             | Y            |                 | Y                |              |               |               |
-| 3                | Source                                            | Y           |               |                      | Y             |              | Y               | Y                |              |               |               |
-| 4                | Citation                                          | Y           |               |                      | Y             |              |                 |                  |              |               |               |
-| 5                | Place                                             | Y           |               | Y                    | Y             | Y            |                 |                  |              |               |               |
-| 6                | Task                                              | Y           |               |                      | Y             |              | Y               | Y                |              |               |               |
-| 7                | Name                                              |             |               |                      | Y             | Y            |                 | Y                |              |               |               |
-| 8                | not used (was General task in RM7 with 0 ownerid) |             |               |                      |               |              |                 |                  |              |               |               |
-| 14               | Place Detail                                      | Y           |               |                      | Y             | Y            |                 |                  |              |               |               |
-| 15               | not used (was Research Item in RM7)               |             |               |                      |               |              |                 |                  |              |               |               |
-| 18               | Task Folder (update of Research Log)              |             |               |                      |               | Y            |                 |                  |              |               |               |
-|                  |                                                   |             |               |                      |               |              |                 |                  |              |               |               |
+| Owner Type Value | Owner Type                                        | URL | Place | Pl Detail | Media | Task | Address | Citation | Name | Child | Event |
+| :--------------- | :------------------------------------------------ | :-- | :---- | :-------- | :---- | :--- | :------ | :------- | :--- | :---- | :---- |
+| 0                | Person                                            | Y   |       |           | Y     | Y    | Y       | Y        | Y    |       | Y     |
+| 1                | Family                                            |     |       |           | Y     | Y    | Y       | Y        |      | Y     | Y     |
+| 2                | Event                                             |     | Y     | Y         | Y     | Y    |         | Y        |      |       |       |
+| 3                | Source                                            | Y   |       |           | Y     |      | Y       | Y        |      |       |       |
+| 4                | Citation                                          | Y   |       |           | Y     |      |         |          |      |       |       |
+| 5                | Place                                             | Y   |       | Y         | Y     | Y    |         |          |      |       |       |
+| 6                | Task                                              | Y   |       |           | Y     |      | Y       | Y        |      |       |       |
+| 7                | Name                                              |     |       |           | Y     | Y    |         | Y        |      |       |       |
+| 8                | not used (was General task in RM7 with 0 ownerid) |     |       |           |       |      |         |          |      |       |       |
+| 14               | Place Detail                                      | Y   |       |           | Y     | Y    |         |          |      |       |       |
+| 15               | not used (was Research Item in RM7)               |     |       |           |       |      |         |          |      |       |       |
+| 18               | Task Folder (update of Research Log)              |     |       |           |       | Y    |         |          |      |       |       |
+| 19               | Association                                       |     |       |           |       |      |         |          |      |       |       |
+
+Table sumary
+Object			Can own these:
+				0 1 2 3 4 5 6 7 8 14 15 18
+URL				0     3 4 5 6     14
+Place			    2
+PlaceDetail		    2     5
+Media			0 1 2 3 4 5 6 7   14
+Task			0 1 2     5   7   14 15
+Address			0 1   3     6
+Citation		0 1 2 3     6     7
+Name			0
+Child			  1
+Eent			0 1
+
 
 ## Boilerplate
 reused text

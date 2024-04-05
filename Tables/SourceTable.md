@@ -37,7 +37,7 @@ CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;
 | 5   | Comments   | _STD                                               |
 | 6   | IsPrivate  | _STD                                               |
 | 7   | TemplateID | _FK =>SourceTemplateTable.TemplateID _SPECIAL-CASE |
-| 8   | Fields     | XML                                                |
+| 8   | Fields     | _STD XML                                           |
 | 9   | UTCModDate | _STD                                               |
 
 

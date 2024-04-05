@@ -44,6 +44,8 @@ CREATE INDEX idxLinkAncestryanID ON AncestryTable (anID);
 
 ## Open Questions
 
+Made some progress correlating what's in the table with what is visible on Ancestry.com site.
+No access to the Ancestry API, so not clear how to proceed.
 
 <pre>
 LinkType  
@@ -95,7 +97,6 @@ rmID 1
 anID 202242349975:1030:173150824
 anID  personID:localeID:treeID
 
-localeID 1030 = English-USA
 
 RJO profile
 https://www.ancestry.com/family-tree/person/tree/173150824/person/202242349975/facts
