@@ -410,6 +410,7 @@ https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-own
 | 18               | Task Folder (update of Research Log)              |     |       |           |       | Y    |         |          |      |       |       |
 | 19               | Association                                       |     |       |           |       |      |         |          |      |       |       |
 
+```
 Table sumary
 Object			Can own these:
 				0 1 2 3 4 5 6 7 8 14 15 18
@@ -423,7 +424,7 @@ Citation		0 1 2 3     6     7
 Name			0
 Child			  1
 Eent			0 1
-
+```
 
 ## Boilerplate
 reused text

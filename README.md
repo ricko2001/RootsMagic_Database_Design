@@ -27,7 +27,7 @@ in separate branches or perhaps create point-in-time "releases" that may be more
 
 ## Content
 
-Currently, all content is in the Tables folder, which contains one file for 
+Currently, most content is in the Tables folder, which contains one file for 
 each RM database table plus one file, "+ General.md", containing information used by the 
 table files.
 Each table file has:
@@ -41,6 +41,11 @@ free form notes another list.
 * An Open Questions section which makes uncertainty more obvious.
 * A DONE marker with a level number. starting at 1 and increasing, 
 here to help order what needs to be fixed next.
+
+Some more general topics are included in this root folder, alongside this ReadMe file..
+
+Also- a disclaimer- I have not investigated the RootsMagic "LDS Options".
+
 
 ## File format
 
