@@ -87,10 +87,7 @@ Name and Value element content are designed to be single line text.
   </Fields>
 </Root>
 ```
-Newly created XML field column data RM ver>=8 starts with <Root>.
-Old style started with a BOM, an XML declaration statement, a LF, then <Root> and ended with a LF.
 
-Builtin SourceTemplates in v 9.1.3 still have old style XML
 
  ## Open Questions
 

@@ -1,4 +1,4 @@
-# RM v9.1.3
+# RM v9.1.3  to  v9.1.4
 
 Information used in common by the individual table files
 
@@ -102,8 +102,14 @@ see:
 
 named:  Fields, FieldDefs
 
+Newly created XML field column data in RM ver v8 and later, starts with <Root> element.
+Old style started with a BOM, an XML declaration statement, a LF, then <Root> and ended with a LF.
+
 This is a SQLite BLOB field, probably for historical reasons. All new data in these fields is
-standard UTF-8 text.
+standard UTF-8 text and could be in a TEXT column.
+
+In a new v9.1.3 database, old style XML format still used for Built-in Source Templates.
+
 
 
 
@@ -413,11 +419,11 @@ https://sqlitetoolsforrootsmagic.com/understanding-the-rootsmagic-8-database-own
 ```
 Table sumary
 Object			Can own these:
-				0 1 2 3 4 5 6 7 8 14 15 18
+				0 1 2 3 4 5 6 7 8 14 15 18  19
 URL				0     3 4 5 6     14
 Place			    2
 PlaceDetail		    2     5
-Media			0 1 2 3 4 5 6 7   14
+Media			0 1 2 3 4 5 6 7   14       19
 Task			0 1 2     5   7   14 15
 Address			0 1   3     6
 Citation		0 1 2 3     6     7

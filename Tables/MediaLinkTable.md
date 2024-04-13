@@ -56,15 +56,19 @@ CREATE INDEX idxMediaOwnerID ON MediaLinkTable (OwnerID);
 
 OwnerType's seen in database
 
-| OwnerType | object       |
-| :-------- | :----------- |
-| 14        | Place Detail |
-| 7         | Name         |
-| 5         | Place        |
-| 4         | Citation     |
-| 3         | Source       |
-| 2         | Fact         |
-| 0         | Person       |
+
+| OwnerType | Can be any of-  | 
+| :-------- | :-----------    |
+| 0         | person          | 
+| 1         | family/couple   | 
+| 2         | fact/event      | 
+| 3         | source          | 
+| 4         | citation        | 
+| 5         | place           | 
+| 6         | task            | 
+| 7         | name            | 
+| 14        | place detail    | 
+| 19        | association     | 
 
 OTHERS ?
 

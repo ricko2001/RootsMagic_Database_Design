@@ -33,10 +33,17 @@ CREATE TABLE URLTable (LinkID INTEGER PRIMARY KEY, OwnerType INTEGER, OwnerID IN
 | 4   | LinkType   | _NOT-IMP  (all 0) ? |
 | 5   | Name       | _TEXT-SL            |
 | 6   | URL        | _TEXT-SL            |
-| 7   | Note       | _STDL               |
+| 7   | Note       | _STD                |
 | 8   | UTCModDate | _STD                |
+ 
 
-OwnerType- person, source, citation  ??
+Possible OwnerType
+3 = SourceTable.SourceID
+4 = CitationTable.CitationID
+5 = PlaceTable.PlaceID
+6 = Tasktable.TaskID
+14 = PlaceTable.PlaceID     (either Place or Place Detail)
+
 
 ## Open Questions
 
