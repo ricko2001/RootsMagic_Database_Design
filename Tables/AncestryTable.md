@@ -7,7 +7,7 @@ Stores the linkage information for a RootsMagic person and an Ancestry.com perso
 ## Table DDL
 
 ``` SQL
-CREATE TABLE AncestryTable (LinkID INTEGER PRIMARY KEY, LinkType INTEGER, rmID INTEGER, anID TEXT, Modified INTEGER, anVersion TEXT, anDate FLOAT, Status INTEGER, UTCModDate FLOAT );
+CREATE TABLE AncestryTable (LinkID INTEGER PRIMARY KEY, LinkType INTEGER, rmID INTEGER, anID TEXT, Modified INTEGER, anVersion TEXT, anDate FLOAT, Status INTEGER, UTCModDate FLOAT , TreeID TEXT);
 
 CREATE INDEX idxLinkAncestryRmId ON AncestryTable (rmID);
 
@@ -27,6 +27,7 @@ CREATE INDEX idxLinkAncestryanID ON AncestryTable (anID);
 | 7   | anDate     | FLOAT   |
 | 8   | Status     | INTEGER |
 | 9   | UTCModDate | FLOAT   |
+| 10  | TreeID     | TEXT    |
 
 ## Notes
 
@@ -41,6 +42,7 @@ CREATE INDEX idxLinkAncestryanID ON AncestryTable (anID);
 | 7   | anDate     |      |
 | 8   | Status     |      |
 | 9   | UTCModDate | _STD |
+| 10  | TreeID     | TEXT |
 
 ## Open Questions
 

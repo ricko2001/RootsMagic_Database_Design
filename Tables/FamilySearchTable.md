@@ -7,7 +7,7 @@ Stores linage information between a RootsMagic person and a FamilySearch Family 
 ## Table DDL
 
 ``` SQL
-CREATE TABLE FamilySearchTable (LinkID INTEGER PRIMARY KEY, LinkType INTEGER, rmID INTEGER, fsID TEXT, Modified INTEGER, fsVersion TEXT, fsDate FLOAT, Status INTEGER, UTCModDate FLOAT );
+CREATE TABLE FamilySearchTable (LinkID INTEGER PRIMARY KEY, LinkType INTEGER, rmID INTEGER, fsID TEXT, Modified INTEGER, fsVersion TEXT, fsDate FLOAT, Status INTEGER, UTCModDate FLOAT , TreeID TEXT);
 
 CREATE INDEX idxLinkRmId ON FamilySearchTable (rmID);
 
@@ -27,6 +27,7 @@ CREATE INDEX idxLinkfsID ON FamilySearchTable (fsID);
 | 7   | fsDate     | FLOAT   |
 | 8   | Status     | INTEGER |
 | 9   | UTCModDate | FLOAT   |
+| 10  | TreeID     | TEXT    |
 
 ## Notes
 
@@ -41,5 +42,6 @@ CREATE INDEX idxLinkfsID ON FamilySearchTable (fsID);
 | 7   | fsDate     |      |
 | 8   | Status     |      |
 | 9   | UTCModDate | _STD |
+| 10  | TreeID     | TEXT |
 
 ## Open Questions
