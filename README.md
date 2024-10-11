@@ -1,4 +1,6 @@
 # RootsMagic_Database_Design
+This branch of the repo describes the ver 9 database schema
+See the main ranch for the current (or latest) schema version
 
 ## Overview
 

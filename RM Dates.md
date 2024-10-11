@@ -5,7 +5,7 @@
 * A text date is entered by the user into the GUI in a Date field.\
  As the user types, the text is validated. The field is highlighted with an error color as the user types until the text can be interpreted as a valid RM date. Input date format is specified in the RM Preferences.\
 * The data that is stored in the database in a RM date field. (Database TEXT field) and a Sort date is created and stored in a RM SortDate field (database INTEGER (BIGINT) field)\
-* When the date is displayed by the GUI, the text is generated from the database date. The output in in the canonical date format as specified by in the preferences.\
+* When the date is displayed by the GUI, the text is generated from the database date. The output is in the canonical date format as specified by in the preferences.\
 (the last is also displayed immediately after leaving the entry field before database update.)\
 
 If we call the database data the "stored date"-\
@@ -38,7 +38,7 @@ Double Date  Julian Gregorian  Old Style - New Style
 
 <https://stevemorse.org/jcal/julian.html>
 
-An example transition-
+An example transition (two consecutive days)-
 
 | Country                     | Last Julian Date | First Gregorian Date |
 | :-------------------------- | :--------------- | :------------------- |
@@ -75,13 +75,13 @@ Q1 2014 => sort date Jan 2014 same sort date as entering Jan 2014 in date
 ## Quaker dates
 
 questions
-Do quaker dates just have a different canonical input/output but stored date is simple gregorian?
+Do quaker dates just have a different canonical input/output but stored date is simple Gregorian?
 
 
 ## Date validation:
 
 General
-must be a valid gregorian date (# days in month, leap year rules etc?) (do double dates jave to be valid Julian dates (leap years were different)\
+must be a valid Gregorian date (# days in month, leap year rules etc?) (do double dates jave to be valid Julian dates (leap years were different)\
 Ambiguous date parts are interpreted by the sequence as specified in preferences.\
 For a Two-Part Date, the first date must be earlier than second.\
 
@@ -91,7 +91,7 @@ Year must be 1583 or greater
 
 
 Canonical date format
-Double JG Dates- the gregorian date after the slash may only contain a year. 
+Double JG Dates- the Gregorian date after the slash may only contain a year. 
 And only the minimum number of digits required is included that show the main year +1.
 so: 1 Feb 1755/6     1 Feb 1759/60     1 Feb 1798/9    1 Feb 1799/1800
 There is no accounting for the 10 days "eliminated"

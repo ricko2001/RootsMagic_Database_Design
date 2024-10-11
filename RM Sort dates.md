@@ -71,7 +71,7 @@ Advanced Date Algorithms by R. Steven Turley
 Here are the algorithms for decoding RM5 dates. These may be the same as RM4, but I haven’t tested them (ve3meo Dec 31, 2012 tested in RM6 and okay). They work for all normal dates, but I haven’t tested them on old dates or Quaker dates. I’m hoping those will just translate to their Julian equivalents and work okay. I’ll report those tests later. These dates are best understood in terms of bit fields on a long (64 bit) integer. Bit 0 is the least significant bit.
 
 bits	value
-0-9	flag indicating date modifiers (see table below)
+0-9		flag indicating date modifiers (see table below)
 10-15	day for the second date; 0 if no second date
 16-19	month for the second date (1=Jan, 2=Feb, etc), 0 if no second date
 20-33	year for the second date+10,000; 0x3fff if no second date
@@ -114,7 +114,7 @@ M1 be the month of the first date, D1 be the day of the first date, Y2 be the ye
  M2 be the month of the second date, D2 by the day of the second date, and F by the flag.
 
 Ds = ((Y1 + 10000)<<49) & (M1<<45) & (D1<<39) & (Y2<<20) & (M2<<16) & (D2<<10) & F ??
-‍Ds = If no Date then
+Ds = If no Date then
 9223372036854775807
 else
 ((Y1 + 10000)<<49) + (M1<<45) + (D1<<39) + (If Date2 then (Y2 + 10000)<<20 else
@@ -281,6 +281,98 @@ FROM (
 ;
 ```
 
+=========================================================================
+=========================================================================
+
+-- SortDateDecodeDev.sql
+/*
+2012-11-03 Tom Holden ve3meo, based on the following algorithm by R. Steven Turley
+see http://sqlitetoolsforrootsmagic.wikispaces.com/Dates%3E+SortDate+Algorithm#Advanced Date Decoder
+
+Encode SortDate
+Ds = ((Y1 + 10000)<<49) & (M1<<45) & (D1<<39) & (Y2<<20) & (M2<<16) & (D2<<10) & F
+where Ds = SortDate, Y = Year, M = Month, D = Day, F = modifier flag.
+
+Decode SortDate
+Y1 = (Ds>>49) - 10000
+M1 = (Ds>>45) & 0xf
+D1 = (Ds>>39) & 0x3f
+Y2 = (Ds>>20) & 0x3fff - 10000
+M2 = (Ds>>16) & 0xf
+D2 = (Ds>>10) & 0x3f
+F = Ds & 0x3ff
+*/
+
+/* SortDateDecode */
+
+
+/*
+SELECT Date, 
+       (Ds >> 49) - 10000 AS Y1, 
+       (Ds >> 45) & 15  AS M1,  
+       (Ds >> 39) & 63  AS D1, 
+       ((Ds >> 20) & 16383) - 10000 AS Y2,
+       (Ds >> 16) & 15 AS M2,
+       (Ds >> 10) & 63 AS D2,
+        Ds & 1023 AS F
+FROM (SELECT Date, SortDate AS Ds FROM EventTable) 
+;
+*/
+
+SELECT Date, 
+       (Ds >> 49) - 10000 AS Y1, 
+       (Ds >> 45) & 15  AS M1,  
+       (Ds >> 39) & 63  AS D1, 
+       ((Ds >> 20) & 16383) - 10000 AS Y2,
+       (Ds >> 16) & 15 AS M2,
+       (Ds >> 10) & 63 AS D2,
+        Ds & 1023 AS F,
+CASE (Ds & 1023) IN (0,3,6,9,12,15,18,21,24,27,30,31)
+ WHEN 1 THEN  
+  CASE Ds & 1023
+   WHEN 0 THEN 'before '
+   WHEN 3 THEN 'by '
+   WHEN 6 THEN 'to '
+   WHEN 9 THEN 'until '
+   WHEN 15 THEN 'between '
+   WHEN 18 THEN 'from '
+   WHEN 27 THEN 'from '
+   WHEN 30 THEN 'since '
+   WHEN 31 THEN 'after '
+   ELSE ''
+  END
+  ||
+  CAST((Ds >> 49) - 10000 AS TEXT) || '-'
+  ||
+  CAST((Ds >> 45) & 15 AS TEXT) || '-'
+  ||
+  CAST((Ds >> 39) & 63 AS TEXT)
+  ||
+  CASE Ds & 1023 IN (15,18,21,24)
+   WHEN 1
+   THEN
+    CASE Ds & 1023
+     WHEN 15 THEN ' and '
+     WHEN 18 THEN ' to '
+     WHEN 21 THEN ' - '
+     WHEN 24 THEN ' or '
+     ELSE ''
+    END
+    ||
+    CAST(((Ds >> 20) & 16383) - 10000 AS TEXT) || '-'
+    ||
+    CAST((Ds >> 16) & 15 AS TEXT) || '-'
+    ||
+    CAST((Ds >> 10) & 63 AS TEXT)
+   ELSE ''
+  END
+ ELSE ''
+END
+AS SortDateDecoded, Ds, Date
+
+ FROM (SELECT Date, SortDate AS Ds FROM EventTable) 
+
+;
 =========================================================================
 =========================================================================
 
