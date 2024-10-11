@@ -2,8 +2,20 @@
 
 ## New Tables
 
+* FANTable
+* FANTypeTable
+* PayloadTable
+
 ## Modified Tables
 
+* CitationTable
+* PersonTable
+
+## Deleted Tables
+
+[none]
+
+## Std diff output
 ```
 $  diff ver\ 8.txt ver\ 9.txt
 11c11
@@ -37,12 +49,110 @@ $  diff ver\ 8.txt ver\ 9.txt
 > CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;
 ```
 
+## Lines re-ordered, common items deleted
+```
+
+< CREATE TABLE CitationTable (CitationID INTEGER PRIMARY KEY, SourceID INTEGER, Comments TEXT, ActualText TEXT, RefNumber TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT, Fields BLOB, UTCModDate FLOAT, CitationName TEXT );
+> CREATE TABLE CitationTable (CitationID INTEGER PRIMARY KEY, SourceID INTEGER, Comments TEXT, ActualText TEXT, RefNumber TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT, Fields BLOB, UTCModDate FLOAT, CitationName TEXT COLLATE RMNOCASE );
+
+< CREATE TABLE PersonTable (PersonID INTEGER PRIMARY KEY, UniqueID TEXT, Sex INTEGER, ParentID INTEGER, SpouseID INTEGER, Color INTEGER, Relate1 INTEGER, Relate2 INTEGER, Flags INTEGER, Living INTEGER, IsPrivate INTEGER, Proof INTEGER, Bookmark INTEGER, Note TEXT, UTCModDate FLOAT );
+> CREATE TABLE PersonTable (PersonID INTEGER PRIMARY KEY, UniqueID TEXT, Sex INTEGER, ParentID INTEGER, SpouseID INTEGER, Color INTEGER, Color1 INTEGER, Color2 INTEGER, Color3 INTEGER, Color4 INTEGER, Color5 INTEGER, Color6 INTEGER, Color7 INTEGER, Color8 INTEGER, Color9 INTEGER, Relate1 INTEGER, Relate2 INTEGER, Flags INTEGER, Living INTEGER, IsPrivate INTEGER, Proof INTEGER, Bookmark INTEGER, Note TEXT, UTCModDate FLOAT );
+
+> CREATE TABLE FANTable (FanID INTEGER PRIMARY KEY, ID1 INTEGER, ID2 INTEGER, FanTypeID INTEGER, PlaceID INTEGER, SiteID INTEGER, Date TEXT, SortDate BIGINT, Description TEXT, Note TEXT, UTCModDate FLOAT );
+
+> CREATE TABLE FANTypeTable (FANTypeID INTEGER PRIMARY KEY, Name TEXT COLLATE RMNOCASE, Role1 TEXT, Role2 TEXT, Sentence1 TEXT, Sentence2 TEXT, UTCModDate FLOAT );
+
+> CREATE TABLE PayloadTable (RecID INTEGER PRIMARY KEY, RecType INTEGER, OwnerType INTEGER, OwnerID INTEGER, Title TEXT, DataRec BLOB, UTCModDate FLOAT );
+
+
+> CREATE INDEX idxFanId1 ON FANTable (ID1);
+
+> CREATE INDEX idxFanId2 ON FANTable (ID2);
+
+> CREATE INDEX idxFANTypeName ON FANTypeTable (Name);
+
+> CREATE INDEX idxPayloadType ON PayloadTable (RecType);
+
+< CREATE INDEX idxSourceName ON SourceTable (Name);
+> CREATE INDEX idxSourceName ON SourceTable (Name COLLATE RMNOCASE) ;
+```
+
 # Ver 7 to ver 8
 
 ## New Tables
 
+* AncestryTable
+* CitationLinkTable
+* FamilySearchTable
+* TagTable
+* TaskLinkTable
+* TaskTable
+
 ## Modified Tables
 
+* ChildTable
+* CitationTable
+* EventTable
+* FactTypeTable
+* FamilyTable
+* MediaLinkTable
+* MultimediaTable
+* NameTable
+* PersonTable
+* PlaceTable
+* URLTable
+
+
+## Modified Tables: Only change: Add column: UTCModDate
+
+* AddressLinkTable
+* AddressTable
+* ConfigTable
+* ExclusionTable
+* GroupTable
+* RoleTable
+* SourceTable
+* SourceTemplateTable
+* WitnessTable
+
+## Deleted Tables
+
+* LabelTable
+* LinkTable
+* LinkAncestryTable
+* ResearchItemTable
+* ResearchTable
+
+## Feature Area
+
+### External Links
+removed-\
+  LinkTable\
+  LinkAncestryTable\
+added-\
+ AncestryTable\
+ FamilySearchTable\
+
+### Source & Citations
+added-\
+  CitationLinkTable\
+
+### Groups
+removed- \
+  LabelTable\
+added-\
+  TagTable\
+
+### Tasks-
+removed-\
+  ResearchTable\
+  ResearchItemTable\
+added-\
+  TaskTable\
+  TaskLinkTable\
+
+
+## std diff output
 ```
 $  diff ver\ 7.txt ver\ 8.txt
 1c1
@@ -196,3 +306,89 @@ $  diff ver\ 7.txt ver\ 8.txt
 >
 > CREATE INDEX idxTaskOwnerID ON TaskLinkTable (OwnerID);
 ```
+
+## Lines re-ordered, common items deleted
+
+```
+< CREATE TABLE AddressLinkTable ();
+> CREATE TABLE AddressLinkTable ( UTCModDate FLOAT );
+
+< CREATE TABLE AddressTable ( Note BLOB );
+> CREATE TABLE AddressTable ( Note TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE ChildTable ( Note BLOB );
+> CREATE TABLE ChildTable ( Note TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE EventTable ( SortDate INTEGER, EditDate FLOAT, Sentence BLOB, Details BLOB, Note BLOB );
+> CREATE TABLE EventTable ( SortDate BIGINT,                  Sentence TEXT, Details TEXT, Note TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE ExclusionTable ();
+> CREATE TABLE ExclusionTable ( UTCModDate FLOAT );
+
+< CREATE TABLE FactTypeTable ( Sentence BLOB );
+> CREATE TABLE FactTypeTable ( Sentence TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE FamilyTable (                                                                Note BLOB );
+> CREATE TABLE FamilyTable ( SpouseLabelStr TEXT, FatherLabelStr TEXT, MotherLabelStr TEXT, Note TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE GroupTable ();
+> CREATE TABLE GroupTable ( UTCModDate FLOAT );
+
+< CREATE TABLE MediaLinkTable ( Note TEXT, Caption TEXT COLLATE RMNOCASE, RefNumber TEXT COLLATE RMNOCASE, Date TEXT, SortDate INTEGER, Description BLOB );
+> CREATE TABLE MediaLinkTable ( Comments TEXT,                                                                                                           UTCModDate FLOAT );
+
+< CREATE TABLE MultimediaTable ( SortDate INTEGER, Description BLOB );
+> CREATE TABLE MultimediaTable ( SortDate BIGINT,  Description TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE NameTable ( SortDate INTEGER, EditDate FLOAT, Sentence BLOB, Note BLOB, BirthYear INTEGER, DeathYear INTEGER );
+> CREATE TABLE NameTable ( SortDate BIGINT,                  Sentence TEXT, Note TEXT, BirthYear INTEGER, DeathYear INTEGER, Display INTEGER, Language TEXT, UTCModDate FLOAT, SurnameMP TEXT, GivenMP TEXT, NicknameMP TEXT );
+
+< CREATE TABLE PersonTable ( EditDate FLOAT, Note BLOB );
+> CREATE TABLE PersonTable (                 Note TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE PlaceTable ( Note BLOB );
+> CREATE TABLE PlaceTable ( Note TEXT, Reverse TEXT COLLATE RMNOCASE, fsID INTEGER, anID INTEGER, UTCModDate FLOAT );
+
+< CREATE TABLE RoleTable ( );
+> CREATE TABLE RoleTable (, UTCModDate FLOAT );
+
+< CREATE TABLE SourceTable ();
+> CREATE TABLE SourceTable ( UTCModDate FLOAT );
+
+< CREATE TABLE SourceTemplateTable ();
+> CREATE TABLE SourceTemplateTable ( UTCModDate FLOAT );
+
+< CREATE TABLE URLTable ( Note BLOB );
+> CREATE TABLE URLTable ( Note TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE WitnessTable ( Note BLOB );
+> CREATE TABLE WitnessTable ( Note TEXT, UTCModDate FLOAT );
+
+< CREATE TABLE CitationTable ( OwnerType INTEGER, OwnerID INTEGER, Quality TEXT, IsPrivate INTEGER, Comments BLOB, ActualText BLOB,                                                                                           Flags INTEGER, );
+> CREATE TABLE CitationTable (                                                                      Comments TEXT, ActualText TEXT, Footnote TEXT, ShortFootnote TEXT, Bibliography TEXT,  UTCModDate FLOAT, CitationName TEXT );
+
+< CREATE TABLE ConfigTable ();
+> CREATE TABLE ConfigTable ( UTCModDate FLOAT );
+
+
+> CREATE TABLE CitationLinkTable (LinkID INTEGER PRIMARY KEY, CitationID INTEGER, OwnerType INTEGER, OwnerID INTEGER, SortOrder INTEGER, Quality TEXT, IsPrivate INTEGER, Flags INTEGER, UTCModDate FLOAT );
+
+
+< CREATE TABLE LabelTable (LabelID INTEGER PRIMARY KEY, LabelType INTEGER, LabelValue INTEGER, LabelName TEXT COLLATE RMNOCASE, Description TEXT );
+> CREATE TABLE TagTable (TagID INTEGER PRIMARY KEY, TagType INTEGER, TagValue INTEGER, TagName TEXT COLLATE RMNOCASE, Description TEXT, UTCModDate FLOAT );
+
+
+> CREATE TABLE TaskTable (TaskID INTEGER PRIMARY KEY, TaskType INTEGER, RefNumber TEXT, Name TEXT COLLATE RMNOCASE, Status INTEGER, Priority INTEGER, Date1 TEXT, Date2 TEXT, Date3 TEXT, SortDate1 BIGINT, SortDate2 BIGINT, SortDate3 BITINT, Filename TEXT, Details TEXT, Results TEXT, UTCModDate FLOAT, Exclude INTEGER );
+> CREATE TABLE TaskLinkTable (LinkID INTEGER PRIMARY KEY, TaskID INTEGER, OwnerType INTEGER, OwnerID INTEGER, UTCModDate FLOAT );
+
+< CREATE TABLE ResearchTable (TaskID INTEGER PRIMARY KEY, TaskType INTEGER, OwnerID INTEGER, OwnerType INTEGER, RefNumber TEXT, Name TEXT COLLATE RMNOCASE, Status INTEGER, Priority INTEGER, Date1 TEXT, Date2 TEXT, Date3 TEXT, SortDate1 INTEGER, SortDate2 INTEGER, SortDate3 INTEGER, Filename TEXT, Details BLOB );
+< CREATE TABLE ResearchItemTable (ItemID INTEGER PRIMARY KEY, LogID INTEGER, Date TEXT, SortDate INTEGER, RefNumber TEXT, Repository TEXT, Goal TEXT, Source TEXT, Result TEXT );
+
+
+< CREATE TABLE LinkTable (LinkID INTEGER PRIMARY KEY, extSystem INTEGER, LinkType INTEGER, rmID INTEGER, extID TEXT, Modified INTEGER, extVersion TEXT, extDate FLOAT, Status INTEGER, Note BLOB );
+< CREATE TABLE LinkAncestryTable (LinkID INTEGER PRIMARY KEY, extSystem INTEGER, LinkType INTEGER, rmID INTEGER, extID TEXT, Modified INTEGER, extVersion TEXT, extDate FLOAT, Status INTEGER, Note BLOB );
+
+> CREATE TABLE AncestryTable (LinkID INTEGER PRIMARY KEY, LinkType INTEGER, rmID INTEGER, anID TEXT, Modified INTEGER, anVersion TEXT, anDate FLOAT, Status INTEGER, UTCModDate FLOAT );
+> CREATE TABLE FamilySearchTable (LinkID INTEGER PRIMARY KEY, LinkType INTEGER, rmID INTEGER, fsID TEXT, Modified INTEGER, fsVersion TEXT, fsDate FLOAT, Status INTEGER, UTCModDate FLOAT );
+```
+
