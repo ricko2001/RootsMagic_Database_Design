@@ -1,4 +1,8 @@
-# RM v9.1.3  to  v9.1.4
+# RM v10.0.2
+
+NOTE
+Status: mostly just changed title to say ver 10 schema. 
+Not much in the data has yet been changed.
 
 Information used in common by the individual table files
 
