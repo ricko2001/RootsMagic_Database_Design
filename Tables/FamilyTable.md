@@ -62,7 +62,16 @@ FatherID and MotherID may be 0, which means the person does not exist
 
 There is not supposed to be a personID = 0 in PersonTable.
 
-HusbOrder, WifeOrder       _NOT-IMP  TODO
+
+Thanks to SQLliteToolsForRootsMagic for the following:
+The FamilyTable.ChildID points to PersonTable.PersonID of Child last active as the root person in Pedigree view,
+0 = No Children in family or no child displayed as root in Pedigree view.
+
+HusbOrder, WifeOrder
+from People View, Edit Menu, Rearrange Spouses:
+0 if never rearranged
+
+
 
 
 Proof is in regards to them being a couple. (?)  Is 
@@ -71,6 +80,4 @@ Proof and Edit are describing the FamilyTable record.
 
 ## Open Questions
 
-
-The FamilyTable.ChildID points to ?? first born  ??
 
