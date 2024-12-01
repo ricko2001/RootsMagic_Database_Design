@@ -714,3 +714,13 @@ EventID	DATE	Details	SortDate	CalcDate	Error
 18	.	blank date																		9223372036854775807	9223372036854775807	0
 34	TText date	Text date																9223372036854775807	9223372036854775807	0
 
+
+
+# Large sort date problems
+< 5000  acts normally
+5000 -6383- is accepted but is deleted when fact is saved
+> 6383  the fact is displayed at the top of the edit screen and 
+displayed as a BC date
+
+Repeated entry of these large numbers cause app failure by not allowing sort date entry- no save check ark etc.
+
