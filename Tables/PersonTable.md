@@ -93,6 +93,15 @@ Relate2 2 -> 12
 
 Flags
 
+From FaceBook group-
+In the underlying PersonsTable there are flags for spouses of both blood relatives and spouses of blood relatives: 1 = "Half"
+2 = "Spouse of" male blood relation (ie display uses "Father, Uncle, Cousin")
+3 = "Spouse of half" male blood relation (ie display uses "Father, Uncle, Cousin")
+6 = "Spouse of" female blood relation (ie display uses "Mother, Aunt, Cousin")
+7 = "Spouse of half" female blood relation (ie display uses "Mother, Aunt, Cousin")
+10 = "Spouse of" blood relation where sex is unknown (ie display uses "Mother/Father, Aunt/Uncle, Cousin")
+
+
 
 Each name has a proof
 Do all items in edit screen have proof fields?
